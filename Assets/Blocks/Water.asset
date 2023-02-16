@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80811cd929824d41a44e5630228a63e, type: 3}
-  m_Name: Water
+  m_Script: {fileID: 11500000, guid: 0a8cac77f2f54c949b11e8ee48a51025, type: 3}
+  m_Name: WAter
   m_EditorClassIdentifier: 
   nameBlock: Water
-  prefab: {fileID: 1023272987353014447, guid: 4dec695387b9bb0408cdefd89f591f78, type: 3}
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  prefab: {fileID: 5915969781426068934, guid: 4dec695387b9bb0408cdefd89f591f78, type: 3}
+  material: {fileID: 2100000, guid: fdd497df988c04e4cbae3b3df6301751, type: 2}
   elementType: 3
-  temperature: 15
-  weight: 1
+  temperature: 11
+  weight: 3
