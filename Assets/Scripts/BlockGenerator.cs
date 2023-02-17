@@ -6,8 +6,10 @@ namespace Rodlix
     public class BlockGenerator : ScriptableObject
     {
         [SerializeField] private BlockInfo[] blocksList = null;
-        [SerializeField, Range(0.0f, 2.0f)] private float amplitude;
-        [SerializeField, Range(0.0f, 1.0f)] private float ofs;
+        [SerializeField] private float frequency = 1.0f;
+        [SerializeField] private float amplitude = 1.0f;
+        [SerializeField, Range(0, 1)] private float lowerThreshold = 0;
+        [SerializeField, Range(0, 1)] private float upperThreshold = 1;
 
         internal void GenerateBlocks(Block[,,] blocks, byte size)
         {
@@ -24,18 +26,14 @@ namespace Rodlix
                             continue;
                         }
 
-                        float xOf = (float)x / size;
-                        float zOf = (float)z / size;
+                        float xOf = (float)x / size * frequency;
+                        float zOf = (float)z / size * frequency;
 
 
-                        float noise = Mathf.PerlinNoise(xOf, zOf) * ofs;
+                        float noise = Mathf.PerlinNoise(xOf, zOf) * amplitude;
 
-                        Debug.Log(xOf);
-                        Debug.Log(noise);
-                        Debug.Log(Mathf.Lerp(0.0f, size * amplitude, noise));
-
-
-                        if (y < Mathf.Lerp(0.0f, size * amplitude, noise))
+                        if (y < Mathf.Lerp(lowerThreshold * size, size, noise) || 
+                            y > Mathf.Lerp(upperThreshold * size, size, 1 - noise))
                         {
 
                             int blockPlace = Random.Range(0, blocksList.Length);

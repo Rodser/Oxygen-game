@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fc365f407124164896142290f59f559, type: 3}
-  m_Name: BlockGeneratorLiquid
+  m_Name: BlockGeneratorHard
   m_EditorClassIdentifier: 
   blocksList:
-  - {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
+  - {fileID: 11400000, guid: 93d75aeb6f6f6604b86354c7ac2e505b, type: 2}
   - {fileID: 11400000, guid: 649dc14d862759d4ab831d7ab4d05d18, type: 2}
+  frequency: 8
+  amplitude: 0.8
+  lowerThreshold: 0.2
+  upperThreshold: 0.6
