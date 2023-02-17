@@ -6,6 +6,8 @@ namespace Rodlix
     public class BlockGenerator : ScriptableObject
     {
         [SerializeField] private BlockInfo[] blocksList = null;
+        [SerializeField, Range(0.0f, 2.0f)] private float amplitude;
+        [SerializeField, Range(0.0f, 1.0f)] private float ofs;
 
         internal void GenerateBlocks(Block[,,] blocks, byte size)
         {
@@ -17,19 +19,38 @@ namespace Rodlix
                 {
                     for (int z = 0; z < size; z++)
                     {
-                        int blockPlace = Random.Range(0, blocksList.Length);
-                        var blockInfo = blocksList[blockPlace];
-
-                        var position = new Vector3(x, y, z);
-
-                        var block = blockInfo.GetPrefab();
-
-                        if (blocks[x, y, z] != null || block == null)
+                        if (blocks[x, y, z] != null)
                         {
                             continue;
                         }
 
-                        blocks[x, y, z] = Instantiate(block, position, Quaternion.identity);
+                        float xOf = (float)x / size;
+                        float zOf = (float)z / size;
+
+
+                        float noise = Mathf.PerlinNoise(xOf, zOf) * ofs;
+
+                        Debug.Log(xOf);
+                        Debug.Log(noise);
+                        Debug.Log(Mathf.Lerp(0.0f, size * amplitude, noise));
+
+
+                        if (y < Mathf.Lerp(0.0f, size * amplitude, noise))
+                        {
+
+                            int blockPlace = Random.Range(0, blocksList.Length);
+                            var blockInfo = blocksList[blockPlace];
+
+                            var position = new Vector3(x, y, z);
+                            var block = blockInfo.GetPrefab();
+
+                            if (block == null)
+                            {
+                                continue;
+                            }
+
+                            blocks[x, y, z] = Instantiate(block, position, Quaternion.identity);
+                        }
                     }
                 }
             }
