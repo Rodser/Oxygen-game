@@ -1,27 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Block", menuName ="MyGame/Block", order =1)]
-public class Block : ScriptableObject
+namespace Rodlix
 {
-    [SerializeField] private string nameBlock = "Element";
-    [Space(10)]
-    [SerializeField] private GameObject prefab = null;
-    [SerializeField] private Material material = null;
-    [SerializeField] private ElementType elementType = ElementType.None;
-    [Space(10)]
-    [SerializeField] private float temperature = 22.5f;
-    [SerializeField] private float weight = 1.0f;
-
-    public GameObject GetPrefab()
+    public class Block : MonoBehaviour
     {
-        if (prefab == null)
-        return null;
+        [SerializeField] private string nameBlock = "Element";
+        [Space(10)]
+        [SerializeField] private ElementType elementType = ElementType.None;
+        [Space(10)]
+        [SerializeField] private float temperature = 22.5f;
+        [SerializeField] private float weight = 1.0f;
 
-        var outPrefab = prefab;
-        outPrefab.GetComponent<Renderer>().material = material;
+        public void SetParameters()
+        {
 
-        return outPrefab;
+        }
+
+        public ElementType GetBlockType()
+        {
+            return elementType;
+        }
     }
 }

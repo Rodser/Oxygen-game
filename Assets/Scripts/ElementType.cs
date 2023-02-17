@@ -1,7 +1,10 @@
-﻿internal enum ElementType
+﻿namespace Rodlix
 {
-    None = 0,
-    Gas,
-    Hard,
-    Liquid
+    public enum ElementType
+    {
+        None = 0,
+        Gas,
+        Hard,
+        Liquid
+    }
 }
