@@ -9,7 +9,7 @@ namespace Rodlix
 
         private Block[,,] blocks = null;
 
-        private void Start()
+        internal void GenerateBlocks(Block[,,] blocks, byte size)
         {
             if (blocksList is null || blocksList.Length < 1) return;
 

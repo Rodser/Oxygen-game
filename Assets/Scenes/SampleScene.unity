@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc365f407124164896142290f59f559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 44
+  size: 60
   blocksList:
   - {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
   - {fileID: 11400000, guid: 844575fdf91bd07488abc307653424dd, type: 2}
