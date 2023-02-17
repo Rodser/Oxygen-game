@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Rodlix
 {
@@ -12,6 +11,8 @@ namespace Rodlix
 
         private void Start()
         {
+            blocks = new Block[size, size, size];
+
             StartGeneration();
             //  renderer
             //  player

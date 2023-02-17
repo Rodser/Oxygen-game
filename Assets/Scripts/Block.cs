@@ -15,5 +15,10 @@ namespace Rodlix
         {
 
         }
+
+        public ElementType GetBlockType()
+        {
+            return elementType;
+        }
     }
 }

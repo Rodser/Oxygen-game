@@ -2,32 +2,29 @@ using UnityEngine;
 
 namespace Rodlix
 {
-    public class BlockGenerator : MonoBehaviour
+    [CreateAssetMenu(fileName = "BlockGenerator", menuName = "MyGame/BlockGenerator", order = 2)]
+    public class BlockGenerator : ScriptableObject
     {
-        [SerializeField] private byte size = 10;
         [SerializeField] private BlockInfo[] blocksList = null;
-
-        private Block[,,] blocks = null;
 
         internal void GenerateBlocks(Block[,,] blocks, byte size)
         {
             if (blocksList is null || blocksList.Length < 1) return;
 
-            blocks = new Block[size, size, size];
-
-            for (int x = 0; x < size; x++)
+            for (int y = 0; y < size; y++)
             {
-                for (int y = 0; y < size; y++)
+                for (int x = 0; x < size; x++)
                 {
                     for (int z = 0; z < size; z++)
                     {
                         int blockPlace = Random.Range(0, blocksList.Length);
                         var blockInfo = blocksList[blockPlace];
+
                         var position = new Vector3(x, y, z);
 
                         var block = blockInfo.GetPrefab();
 
-                        if (block == null)
+                        if (blocks[x, y, z] != null || block == null)
                         {
                             continue;
                         }

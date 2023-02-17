@@ -1,6 +1,6 @@
 ﻿namespace Rodlix
 {
-    internal enum ElementType
+    public enum ElementType
     {
         None = 0,
         Gas,
