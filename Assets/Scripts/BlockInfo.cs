@@ -19,11 +19,13 @@ namespace Rodlix
         {
             if (prefab == null || elementType == ElementType.None)
                 return null;
-
+            
             var outPrefab = prefab;
-            outPrefab.GetComponent<Renderer>().material = material;
+           // outPrefab.GetComponent<Renderer>().material = material;
 
             return outPrefab;
         }
+
+        public Material GetMaterial() { return material; }
     }
 }

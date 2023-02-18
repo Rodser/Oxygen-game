@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a46626703f1a6d240b14184fa9c67328, type: 2}
+  - {fileID: 2100000, guid: fdd497df988c04e4cbae3b3df6301751, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,6 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameBlock: Element
-  elementType: 0
+  elementType: 2
   temperature: 22.5
   weight: 1
