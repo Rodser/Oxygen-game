@@ -11,45 +11,49 @@ namespace Rodlix
         [SerializeField] private BorderBlockGenerator borderBlockGenerator = null;
         [SerializeField] private BlockGenerator[] generators = null;
 
-        public Block[,,] StartGeneration()
+        public GameObject[,,] StartGeneration(Base baseBlocks)
         {
             Block[,,] blocks = new Block[worldSize, worldSize, worldSize];
 
-            borderBlockGenerator.Generate(blocks, worldSize);
+        // граница
+            borderBlockGenerator.Generate(blocks, baseBlocks, worldSize);
 
+        // грунт
+        // жидкость
+        // газ
             foreach (var generator in generators)
             {
                 generator.Generate(blocks, worldSize);
             }
 
-            RenderGenerate(blocks, worldSize);
-            return blocks;
+            return RenderGenerate(blocks, worldSize);
         }
 
-        public void RenderGenerate(Block[,,] blocks, byte size)
+        public GameObject[,,] RenderGenerate(Block[,,] blocks, byte size)
         {
+            GameObject[,,] gameObjects = new GameObject[worldSize, worldSize, worldSize];
+
             for (int y = 0; y < size; y++)
             {
                 for (int x = 0; x < size; x++)
                 {
                     for (int z = 0; z < size; z++)
                     {
-                        if (blocks[x,y,z] == null)
+                        Block block = blocks[x, y, z];
+                        GameObject prefab = block?.prefab;
+                        if (prefab != null)
                         {
-                            continue;
-                        } 
-
-                        var position = new Vector3(x, y, z);
-                        Instantiate(blocks[x, y, z], position, Quaternion.identity);
+                            Vector3 position = new Vector3(x, y, z);
+                            GameObject gameObject = Instantiate(prefab, position, Quaternion.identity);
+                            gameObject.GetComponent<Renderer>().material = block.material;
+                            gameObjects[x, y, z] = gameObject;
+                        }
                     }
                 }
             }
+            return gameObjects;
         }
 
-        // граница
-        // грунт
-        // жидкость
-        // газ
         // предметы
         // живность
         // игрок

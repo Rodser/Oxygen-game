@@ -421,12 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de43553fcc186a5428e55390350176ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 50
-  generators:
-  - {fileID: 11400000, guid: 3ae5963b821380640a998f96ed55c337, type: 2}
-  - {fileID: 11400000, guid: bb735c9dc581cd14585601295891588b, type: 2}
-  - {fileID: 11400000, guid: e3d23083f77d9384c9582b0b89d040f1, type: 2}
-  - {fileID: 11400000, guid: 10414a57993c7684ba7e04591017252e, type: 2}
+  generator: {fileID: 11400000, guid: 5bd06aae62f61154eabd2f8e1bc487b9, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

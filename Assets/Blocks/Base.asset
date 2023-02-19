@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9189bdfcd162aa4b9b09d62eb65ae1f, type: 3}
-  m_Name: WorldGenerator
+  m_Script: {fileID: 11500000, guid: 3cc5ec34e81a8014ebda3eb4895e61d7, type: 3}
+  m_Name: Base
   m_EditorClassIdentifier: 
-  worldSize: 11
-  prefab: {fileID: 0}
-  borderBlockGenerator:
-    yLower: 1
-    yUpper: 1
-    sideLimiter: 1
-  generators: []
+  Resources:
+  - {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}

@@ -5,12 +5,13 @@ namespace Rodlix
     public class Starter : MonoBehaviour
     {
         [SerializeField] private WorldGenerator generator = null;
+        [SerializeField] private Base baseBlocks = null;
 
-        private Block[,,] blocks = null;
+        private GameObject[,,] gameObjects = null;
 
         private void Start()
         {
-            blocks = generator.StartGeneration();
+            gameObjects = generator.StartGeneration(baseBlocks);
 
 
             //  renderer

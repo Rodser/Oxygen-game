@@ -29,7 +29,7 @@ namespace Rodlix
                             if (y < Mathf.Lerp(lowerThreshold * size, size, noise) ||
                                 y > Mathf.Lerp(upperThreshold * size, size, 1 - noise))
                             {
-                                blocks[x, y, z] = blockInfo.GetPrefab();
+                                blocks[x, y, z] = blockInfo.GetBlock();
                             }
                         }
                     }
