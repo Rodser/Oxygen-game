@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9189bdfcd162aa4b9b09d62eb65ae1f, type: 3}
   m_Name: WorldGenerator
   m_EditorClassIdentifier: 
-  worldSize: 11
-  prefab: {fileID: 0}
+  worldSize: 39
   borderBlockGenerator:
     yLower: 1
     yUpper: 1
     sideLimiter: 1
-  generators: []
+  generators:
+  - blockInfo: {fileID: 11400000, guid: 2399687f1f21cfb4eb95a908badb6796, type: 2}
+    frequency: 3.14
+    amplitude: 1.71
+    lowerThreshold: 0.16
+    upperThreshold: 0.9
+  - blockInfo: {fileID: 11400000, guid: 96122b6e92147b2409e0ba9ac8797ca1, type: 2}
+    frequency: 1.11
+    amplitude: 0.36
+    lowerThreshold: 0.42
+    upperThreshold: 0.5
