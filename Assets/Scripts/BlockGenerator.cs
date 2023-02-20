@@ -12,22 +12,22 @@ namespace Rodlix
         [SerializeField, Range(0, 1)] private float lowerThreshold = 0;
         [SerializeField, Range(0, 1)] private float upperThreshold = 1;
 
-        public void Generate(Block[,,] blocks, byte size)
+        public void Generate(Block[,,] blocks, Vector3Int size)
         {
-            for (int y = 0; y < size; y++)
+            for (int y = 0; y < size.y; y++)
             {
-                for (int x = 0; x < size; x++)
+                for (int x = 0; x < size.x; x++)
                 {
-                    for (int z = 0; z < size; z++)
+                    for (int z = 0; z < size.z; z++)
                     {
                         if (blocks[x, y, z] == null)
                         {
-                            float xOf = (float)x / size * frequency;
-                            float zOf = (float)z / size * frequency;
+                            float xOf = (float)x / size.x * frequency;
+                            float zOf = (float)z / size.z * frequency;
                             float noise = Mathf.PerlinNoise(xOf, zOf) * amplitude;
 
-                            if (y < Mathf.Lerp(lowerThreshold * size, size, noise) ||
-                                y > Mathf.Lerp(upperThreshold * size, size, 1 - noise))
+                            if (y < Mathf.Lerp(lowerThreshold * size.y, size.y, noise) ||
+                                y > Mathf.Lerp(upperThreshold * size.y, size.y, 1 - noise))
                             {
                                 blocks[x, y, z] = blockInfo.GetBlock();
                             }

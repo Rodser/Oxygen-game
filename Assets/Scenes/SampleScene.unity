@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 11400000, guid: 5bd06aae62f61154eabd2f8e1bc487b9, type: 2}
+  baseBlocks: {fileID: 11400000, guid: 3841b14bad3bbfc428c932f42a7b167f, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

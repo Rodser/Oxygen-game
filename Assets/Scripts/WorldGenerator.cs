@@ -5,7 +5,7 @@ namespace Rodlix
     [CreateAssetMenu(fileName = "WorldGenerator", menuName = "MyGame/WorldGenerator", order = 0)]
     public class WorldGenerator : ScriptableObject
     {
-        [SerializeField] private byte worldSize = 10;
+        [SerializeField] private Vector3Int worldSize;
         [SerializeField] private Block prefab = null;
         [Space(10)]
         [SerializeField] private BorderBlockGenerator borderBlockGenerator = null;
@@ -13,7 +13,7 @@ namespace Rodlix
 
         public GameObject[,,] StartGeneration(Base baseBlocks)
         {
-            Block[,,] blocks = new Block[worldSize, worldSize, worldSize];
+            Block[,,] blocks = new Block[worldSize.x, worldSize.y, worldSize.z];
 
         // граница
             borderBlockGenerator.Generate(blocks, baseBlocks, worldSize);
@@ -26,18 +26,18 @@ namespace Rodlix
                 generator.Generate(blocks, worldSize);
             }
 
-            return RenderGenerate(blocks, worldSize);
+            return RenderGenerate(blocks);
         }
 
-        public GameObject[,,] RenderGenerate(Block[,,] blocks, byte size)
+        public GameObject[,,] RenderGenerate(Block[,,] blocks)
         {
-            GameObject[,,] gameObjects = new GameObject[worldSize, worldSize, worldSize];
+            GameObject[,,] gameObjects = new GameObject[worldSize.x, worldSize.y, worldSize.z];
 
-            for (int y = 0; y < size; y++)
+            for (int y = 0; y < worldSize.y; y++)
             {
-                for (int x = 0; x < size; x++)
+                for (int x = 0; x < worldSize.x; x++)
                 {
-                    for (int z = 0; z < size; z++)
+                    for (int z = 0; z < worldSize.z; z++)
                     {
                         Block block = blocks[x, y, z];
                         GameObject prefab = block?.prefab;
