@@ -1,53 +1,36 @@
+using System;
 using UnityEngine;
 
 namespace Rodlix
 {
-    [CreateAssetMenu(fileName = "BlockGenerator", menuName = "MyGame/BlockGenerator", order = 2)]
-    public class BlockGenerator : ScriptableObject
+    [Serializable]
+    public class BlockGenerator
     {
-        [SerializeField] private BlockInfo[] blocksList = null;
+        [SerializeField] private BlockInfo blockInfo = null;
         [SerializeField] private float frequency = 1.0f;
         [SerializeField] private float amplitude = 1.0f;
         [SerializeField, Range(0, 1)] private float lowerThreshold = 0;
         [SerializeField, Range(0, 1)] private float upperThreshold = 1;
 
-        internal void GenerateBlocks(Block[,,] blocks, byte size)
+        public void Generate(Block[,,] blocks, Vector3Int size)
         {
-            if (blocksList is null || blocksList.Length < 1) return;
-
-            for (int y = 0; y < size; y++)
+            for (int y = 0; y < size.y; y++)
             {
-                for (int x = 0; x < size; x++)
+                for (int x = 0; x < size.x; x++)
                 {
-                    for (int z = 0; z < size; z++)
+                    for (int z = 0; z < size.z; z++)
                     {
-                        if (blocks[x, y, z] != null)
+                        if (blocks[x, y, z] == null)
                         {
-                            continue;
-                        }
+                            float xOf = (float)x / size.x * frequency;
+                            float zOf = (float)z / size.z * frequency;
+                            float noise = Mathf.PerlinNoise(xOf, zOf) * amplitude;
 
-                        float xOf = (float)x / size * frequency;
-                        float zOf = (float)z / size * frequency;
-
-
-                        float noise = Mathf.PerlinNoise(xOf, zOf) * amplitude;
-
-                        if (y < Mathf.Lerp(lowerThreshold * size, size, noise) || 
-                            y > Mathf.Lerp(upperThreshold * size, size, 1 - noise))
-                        {
-
-                            int blockPlace = Random.Range(0, blocksList.Length);
-                            var blockInfo = blocksList[blockPlace];
-
-                            var position = new Vector3(x, y, z);
-                            var block = blockInfo.GetPrefab();
-
-                            if (block == null)
+                            if (y < Mathf.Lerp(lowerThreshold * size.y, size.y, noise) ||
+                                y > Mathf.Lerp(upperThreshold * size.y, size.y, 1 - noise))
                             {
-                                continue;
+                                blocks[x, y, z] = blockInfo.GetBlock();
                             }
-
-                            blocks[x, y, z] = Instantiate(block, position, Quaternion.identity);
                         }
                     }
                 }

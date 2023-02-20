@@ -4,26 +4,19 @@ namespace Rodlix
 {
     public class Starter : MonoBehaviour
     {
-        [SerializeField] private byte size = 10;
-        [SerializeField] private BlockGenerator[] generators = null;
+        [SerializeField] private WorldGenerator generator = null;
+        [SerializeField] private Base baseBlocks = null;
 
-        private Block[,,] blocks = null;
+        private GameObject[,,] gameObjects = null;
 
         private void Start()
         {
-            blocks = new Block[size, size, size];
+            gameObjects = generator.StartGeneration(baseBlocks);
 
-            StartGeneration();
+
             //  renderer
             //  player
         }
 
-        private void StartGeneration()
-        {
-            foreach (var generator in generators)
-            {
-                generator.GenerateBlocks(blocks, size);
-            }
-        }
     }
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 962634451894849056}
   - component: {fileID: 2067807324033163375}
   - component: {fileID: 7371482815428086199}
-  - component: {fileID: 5915969781426068934}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a46626703f1a6d240b14184fa9c67328, type: 2}
+  - {fileID: 2100000, guid: 3b74a14669d44d144aee2b68754ec6be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,19 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5915969781426068934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023272987353014447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80811cd929824d41a44e5630228a63e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameBlock: Element
-  elementType: 0
-  temperature: 22.5
-  weight: 1
