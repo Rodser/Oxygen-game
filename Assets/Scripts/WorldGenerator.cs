@@ -35,6 +35,7 @@ namespace Rodlix
         // предметы
         private void SpawnBuilding(Block[,,] blocks)
         {
+            if(startBuilding == null) { return; }
             Vector3Int position = new Vector3Int(worldSize.x/2, worldSize.y/2, worldSize.z/2);
             GameObject obj = Instantiate(startBuilding.gameObject, position, Quaternion.identity);
 
