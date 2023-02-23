@@ -24,10 +24,11 @@ namespace Rodlix
                         {
                             float xOf = (float)x / size.x * frequency;
                             float zOf = (float)z / size.z * frequency;
-                            float noise = Mathf.PerlinNoise(xOf, zOf) * amplitude;
+                            float noiseDown = Mathf.PerlinNoise(xOf, zOf) * amplitude;
+                            float noiseUp = 1 - Mathf.Abs(noiseDown);
 
-                            if (y < Mathf.Lerp(lowerThreshold * size.y, size.y, noise) ||
-                                y > Mathf.Lerp(upperThreshold * size.y, size.y, 1 - noise))
+                            if (y > Mathf.Lerp(lowerThreshold * size.y, upperThreshold * size.y, noiseDown) &&
+                                y < Mathf.Lerp(lowerThreshold * size.y, upperThreshold * size.y, noiseUp))
                             {
                                 blocks[x, y, z] = blockInfo.GetBlock();
                             }
