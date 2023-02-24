@@ -11,6 +11,7 @@ namespace Rodlix
         public float temperature = 22.5f;
         public float weight = 1.0f;
 
+
         public Block(GameObject prefab, string nameBlock, Material material, ElementType elementType, float temperature, float weight)
         {
             this.prefab = prefab;
@@ -19,6 +20,11 @@ namespace Rodlix
             this.material = material;
             this.temperature = temperature;
             this.weight = weight;
+        }
+
+        public Block(ElementType elementType)
+        {
+            this.elementType = elementType;
         }
 
         public ElementType GetBlockType()

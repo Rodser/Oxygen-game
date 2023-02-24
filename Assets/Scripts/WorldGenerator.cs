@@ -28,7 +28,7 @@ namespace Rodlix
             }
 
             SpawnBuilding(blocks);
-
+            Debug.Log("End WorldGenerate");
             return blocks;
         }
 

@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Rodlix
 {
     public class BlockRenderer : MonoBehaviour
     {
         private Vector3Int worldSize;
+        private List<ChunkRenderer> chunks;
 
         public void SetWorldSize(Vector3Int worldSize)
         {
             this.worldSize = worldSize;
+            chunks= new List<ChunkRenderer>();
         }
 
         public GameObject[,,] Generate(Block[,,] blocks)
@@ -22,18 +25,50 @@ namespace Rodlix
                     for (int z = 0; z < worldSize.z; z++)
                     {
                         Block block = blocks[x, y, z];
-                        GameObject prefab = block?.prefab;
-                        if (prefab != null)
+
+                        if(block == null)
                         {
-                            Vector3 position = new Vector3(x, y, z);
-                            GameObject gameObject = Instantiate(prefab, position, Quaternion.identity);
-                            gameObject.GetComponent<Renderer>().material = block.material;
-                            gameObjects[x, y, z] = gameObject;
+                            block = new Block(ElementType.None);
+                            blocks[x, y, z] = block;
+                            continue;
+                        }
+
+                        if (CheckBlockinChunk(block) == false)
+                        {
+                            ChunkRenderer chunk = new GameObject(block.nameBlock).AddComponent<ChunkRenderer>();
+                            chunk.currentType = block.elementType;
+                            chunk.material = block.material;
+                            chunks.Add(chunk);
                         }
                     }
                 }
             }
+            Debug.Log("Add blocks in chunks");
+
+            foreach (ChunkRenderer chunkRenderer in chunks)
+            {
+                chunkRenderer.Generate(worldSize, blocks);
+
+                Debug.Log("Render chunk" + chunkRenderer.currentType);
+            }
+
             return gameObjects;
+        }
+
+
+
+        private bool CheckBlockinChunk(Block block)
+        {
+            foreach (ChunkRenderer chunk in chunks)
+            {
+                if (chunk.currentType == block.elementType)
+                {
+                    chunk.currentBlocks.Add(block);
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
