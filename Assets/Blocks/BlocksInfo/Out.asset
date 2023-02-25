@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Out
   m_EditorClassIdentifier: 
   nameBlock: out
-  prefab: {fileID: 1023272987353014447, guid: 4dec695387b9bb0408cdefd89f591f78, type: 3}
-  material: {fileID: 2100000, guid: a46626703f1a6d240b14184fa9c67328, type: 2}
+  material: {fileID: 2100000, guid: 3fa9d4d5d46e50141a312d5e309cce7e, type: 2}
   elementType: 1
   temperature: 20
   weight: 9
