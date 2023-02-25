@@ -15,6 +15,6 @@ MonoBehaviour:
   nameBlock: Water
   prefab: {fileID: 1023272987353014447, guid: 4dec695387b9bb0408cdefd89f591f78, type: 3}
   material: {fileID: 2100000, guid: fdd497df988c04e4cbae3b3df6301751, type: 2}
-  elementType: 4
+  elementType: 5
   temperature: 15
   weight: 1

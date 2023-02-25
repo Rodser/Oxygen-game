@@ -6,37 +6,37 @@ namespace Rodlix
     [CreateAssetMenu(fileName = "WorldGenerator", menuName = "MyGame/WorldGenerator", order = 0)]
     public class WorldGenerator : ScriptableObject
     {
-        [SerializeField] private Vector3Int worldSize;
+        [SerializeField] public Vector3Int WorldSize;
         [SerializeField] private Construction startBuilding = null;
         [Space(10)]
         [SerializeField] private BorderBlockGenerator borderBlockGenerator = null;
         [SerializeField] private BlockGenerator[] generators = null;
 
-        public GameObject[,,] StartGeneration(Base baseBlocks)
+        public Block[,,] StartGeneration(Base baseBlocks)
         {
-            Block[,,] blocks = new Block[worldSize.x, worldSize.y, worldSize.z];
+            Block[,,] blocks = new Block[WorldSize.x, WorldSize.y, WorldSize.z];
 
         // граница
-            borderBlockGenerator.Generate(blocks, baseBlocks, worldSize);
+            borderBlockGenerator.Generate(blocks, baseBlocks, WorldSize);
 
         // грунт
         // жидкость
         // газ
             foreach (var generator in generators)
             {
-                generator.Generate(blocks, worldSize);
+                generator.Generate(blocks, WorldSize);
             }
 
             SpawnBuilding(blocks);
-
-            return RenderGenerate(blocks);
+            Debug.Log("End WorldGenerate");
+            return blocks;
         }
 
         // предметы
         private void SpawnBuilding(Block[,,] blocks)
         {
             if(startBuilding == null) { return; }
-            Vector3Int position = new Vector3Int(worldSize.x/2, worldSize.y/2, worldSize.z/2);
+            Vector3Int position = new Vector3Int(WorldSize.x/2, WorldSize.y/2, WorldSize.z/2);
             GameObject obj = Instantiate(startBuilding.gameObject, position, Quaternion.identity);
 
             int minXPos = position.x + startBuilding.minPosition.x;
@@ -56,33 +56,8 @@ namespace Rodlix
                     }
                 }
             }
-
         }
 
-        public GameObject[,,] RenderGenerate(Block[,,] blocks)
-        {
-            GameObject[,,] gameObjects = new GameObject[worldSize.x, worldSize.y, worldSize.z];
-
-            for (int y = 0; y < worldSize.y; y++)
-            {
-                for (int x = 0; x < worldSize.x; x++)
-                {
-                    for (int z = 0; z < worldSize.z; z++)
-                    {
-                        Block block = blocks[x, y, z];
-                        GameObject prefab = block?.prefab;
-                        if (prefab != null)
-                        {
-                            Vector3 position = new Vector3(x, y, z);
-                            GameObject gameObject = Instantiate(prefab, position, Quaternion.identity);
-                            gameObject.GetComponent<Renderer>().material = block.material;
-                            gameObjects[x, y, z] = gameObject;
-                        }
-                    }
-                }
-            }
-            return gameObjects;
-        }
 
         // живность
         // игрок

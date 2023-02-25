@@ -4,8 +4,9 @@
     {
         None = 0,
         Indestructible,
-        Gas,
-        Hard,
-        Liquid
+        Dirt,
+        Coal,
+        Oxygen,
+        Water
     }
 }

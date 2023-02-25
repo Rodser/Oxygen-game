@@ -15,6 +15,6 @@ MonoBehaviour:
   nameBlock: Dirt
   prefab: {fileID: 1023272987353014447, guid: 4dec695387b9bb0408cdefd89f591f78, type: 3}
   material: {fileID: 2100000, guid: 3b74a14669d44d144aee2b68754ec6be, type: 2}
-  elementType: 3
+  elementType: 2
   temperature: 23.2
   weight: 9
