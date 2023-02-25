@@ -17,6 +17,7 @@ namespace Rodlix
         public GameObject[,,] Generate(Block[,,] blocks)
         {
             GameObject[,,] gameObjects = new GameObject[worldSize.x, worldSize.y, worldSize.z];
+            Block[,,] currentBlocks = blocks;
 
             for (int y = 0; y < worldSize.y; y++)
             {
@@ -24,12 +25,12 @@ namespace Rodlix
                 {
                     for (int z = 0; z < worldSize.z; z++)
                     {
-                        Block block = blocks[x, y, z];
+                        Block block = currentBlocks[x, y, z];
 
                         if(block == null)
                         {
                             block = new Block(ElementType.None);
-                            blocks[x, y, z] = block;
+                            currentBlocks[x, y, z] = block;
                             continue;
                         }
 
@@ -38,6 +39,8 @@ namespace Rodlix
                             ChunkRenderer chunk = new GameObject(block.nameBlock).AddComponent<ChunkRenderer>();
                             chunk.currentType = block.elementType;
                             chunk.material = block.material;
+                            chunk.currentBlocks.Add(block);
+
                             chunks.Add(chunk);
                         }
                     }
@@ -47,7 +50,7 @@ namespace Rodlix
 
             foreach (ChunkRenderer chunkRenderer in chunks)
             {
-                chunkRenderer.Generate(worldSize, blocks);
+                chunkRenderer.Generate(worldSize, currentBlocks);
 
                 Debug.Log("Render chunk" + chunkRenderer.currentType);
             }

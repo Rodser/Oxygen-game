@@ -18,7 +18,7 @@ namespace Rodlix
         private Vector3Int size;
         private Block[,,] worldBlocks;
 
-        public float BlockScale { get; private set; } = 0.25f;
+        public float BlockScale { get; private set; } = 1f;
 
         public void Generate(Vector3Int size, Block[,,] worldBlocks)
         {
@@ -68,7 +68,7 @@ namespace Rodlix
         {
             var blockPosition = new Vector3Int(x, y, z);
             ElementType blockType = worldBlocks[x, y, z].elementType;
-            if (blockType == ElementType.None) return;
+            if (blockType != currentType) return;
 
             if (GetTypeAtPosition(blockPosition + Vector3Int.right) != currentType)
             {

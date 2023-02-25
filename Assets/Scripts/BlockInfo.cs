@@ -8,7 +8,6 @@ namespace Rodlix
     {
         [SerializeField] private string nameBlock = "Element";
         [Space(10)]
-        [SerializeField] private GameObject prefab = null;
         [SerializeField] private Material material = null;
         [SerializeField] private ElementType elementType = ElementType.None;
         [Space(10)]
@@ -16,11 +15,8 @@ namespace Rodlix
         [SerializeField] private float weight = 1.0f;
 
         public Block GetBlock()
-        {
-            if (prefab == null || elementType == ElementType.None)
-                return null;
-            
-            Block block = new Block(prefab, nameBlock, material, elementType, temperature, weight);
+        {            
+            Block block = new Block(nameBlock, material, elementType);
 
             return block;
         }
