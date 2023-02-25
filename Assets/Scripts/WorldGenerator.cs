@@ -1,12 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Rodlix
 {
     [CreateAssetMenu(fileName = "WorldGenerator", menuName = "MyGame/WorldGenerator", order = 0)]
     public class WorldGenerator : ScriptableObject
     {
-        [SerializeField] public Vector3Int WorldSize;
+        [SerializeField] private Vector3Int worldSize;
+        [SerializeField] private float blockScale;
+        [Space(10)]
         [SerializeField] private Construction startBuilding = null;
         [Space(10)]
         [SerializeField] private BorderBlockGenerator borderBlockGenerator = null;
@@ -14,29 +15,39 @@ namespace Rodlix
 
         public Block[,,] StartGeneration(Base baseBlocks)
         {
-            Block[,,] blocks = new Block[WorldSize.x, WorldSize.y, WorldSize.z];
+            Block[,,] blocks = new Block[worldSize.x, worldSize.y, worldSize.z];
 
         // граница
-            borderBlockGenerator.Generate(blocks, baseBlocks, WorldSize);
+            borderBlockGenerator.Generate(blocks, baseBlocks, worldSize);
 
         // грунт
         // жидкость
         // газ
             foreach (var generator in generators)
             {
-                generator.Generate(blocks, WorldSize);
+                generator.Generate(blocks, worldSize);
             }
 
+        // предметы
             SpawnBuilding(blocks);
             Debug.Log("End WorldGenerate");
             return blocks;
         }
 
-        // предметы
+        public Vector3Int GetWorldSize()
+        {
+            return worldSize;
+        }
+
+        public float GetBlockScale()
+        {
+            return blockScale;
+        }
+
         private void SpawnBuilding(Block[,,] blocks)
         {
             if(startBuilding == null) { return; }
-            Vector3Int position = new Vector3Int(WorldSize.x/2, WorldSize.y/2, WorldSize.z/2);
+            Vector3Int position = new Vector3Int(worldSize.x/2, worldSize.y/2, worldSize.z/2);
             GameObject obj = Instantiate(startBuilding.gameObject, position, Quaternion.identity);
 
             int minXPos = position.x + startBuilding.minPosition.x;

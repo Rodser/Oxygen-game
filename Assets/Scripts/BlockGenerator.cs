@@ -18,11 +18,11 @@ namespace Rodlix
                 float lowerThreshold = octave.lowerThreshold;
                 float upperThreshold = octave.upperThreshold;
                 
-                size = GenerateOctave(blocks, size, frequency, amplitude, lowerThreshold, upperThreshold);
+                GenerateOctave(blocks, size, frequency, amplitude, lowerThreshold, upperThreshold);
             }
         }
 
-        private Vector3Int GenerateOctave(Block[,,] blocks, Vector3Int size, float frequency, float amplitude, float lowerThreshold, float upperThreshold)
+        private void GenerateOctave(Block[,,] blocks, Vector3Int size, float frequency, float amplitude, float lowerThreshold, float upperThreshold)
         {
             for (int y = 0; y < size.y; y++)
             {
@@ -46,8 +46,6 @@ namespace Rodlix
                     }
                 }
             }
-
-            return size;
         }
     }
 }

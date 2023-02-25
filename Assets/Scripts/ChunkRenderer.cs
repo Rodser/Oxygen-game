@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Rodlix
@@ -18,22 +19,23 @@ namespace Rodlix
         private Vector3Int size;
         private Block[,,] worldBlocks;
 
-        public float BlockScale { get; private set; } = 1f;
+        private float blockScale = 1f;
 
-        public void Generate(Vector3Int size, Block[,,] worldBlocks)
+        public async Task Generate(Vector3Int size, Block[,,] worldBlocks, float blockScale)
         {
             this.size = size;
             this.worldBlocks = worldBlocks;
+            this.blockScale = blockScale;
 
             chunkMesh = new Mesh();
             vertices = new List<Vector3>();
             uvs = new List<Vector2>();
             triangles = new List<int>();
 
-            RegenerateMesh();
+            await RegenerateMesh();
         }
 
-        private void RegenerateMesh()
+        private async Task RegenerateMesh()
         {
             vertices.Clear();
             // uvs.Clear();
@@ -45,7 +47,7 @@ namespace Rodlix
                 {
                     for (int z = 0; z < size.z; z++)
                     {
-                        GenerateBlock(x, y, z);
+                        DrawSidesOfBlock(x, y, z);
                     }
                 }
             }
@@ -55,16 +57,18 @@ namespace Rodlix
             chunkMesh.triangles = triangles.ToArray();
             // chunkMesh.uv = uvs.ToArray();
 
-            chunkMesh.Optimize();
-            chunkMesh.RecalculateNormals();
-            chunkMesh.RecalculateBounds();
+            //chunkMesh.Optimize();
+            //chunkMesh.RecalculateNormals();
+            //chunkMesh.RecalculateBounds();
 
             GetComponent<MeshFilter>().sharedMesh = chunkMesh;
             GetComponent<MeshCollider>().sharedMesh = chunkMesh;
             GetComponent<MeshRenderer>().material = material;
+
+            await Task.Yield();
         }
 
-        private void GenerateBlock(int x, int y, int z)
+        private void DrawSidesOfBlock(int x, int y, int z)
         {
             var blockPosition = new Vector3Int(x, y, z);
             ElementType blockType = worldBlocks[x, y, z].elementType;
@@ -118,60 +122,60 @@ namespace Rodlix
 
         private void GenerateRight(Vector3Int position)
         {
-            vertices.Add((new Vector3(1, 0, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 1, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 0, 1) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 1, 1) + position) * BlockScale);
+            vertices.Add((new Vector3(1, 0, 0) + position) * blockScale);
+            vertices.Add((new Vector3(1, 1, 0) + position) * blockScale);
+            vertices.Add((new Vector3(1, 0, 1) + position) * blockScale);
+            vertices.Add((new Vector3(1, 1, 1) + position) * blockScale);
 
             AddLastVerticesSquare();
         }
 
         private void GenerateLeft(Vector3Int position)
         {
-            vertices.Add((new Vector3(0, 0, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(0, 0, 1) + position) * BlockScale);
-            vertices.Add((new Vector3(0, 1, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(0, 1, 1) + position) * BlockScale);
+            vertices.Add((new Vector3(0, 0, 0) + position) * blockScale);
+            vertices.Add((new Vector3(0, 0, 1) + position) * blockScale);
+            vertices.Add((new Vector3(0, 1, 0) + position) * blockScale);
+            vertices.Add((new Vector3(0, 1, 1) + position) * blockScale);
 
             AddLastVerticesSquare();
         }
 
         private void GenerateFront(Vector3Int position)
         {
-            vertices.Add((new Vector3(0, 0, 1) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 0, 1) + position) * BlockScale);
-            vertices.Add((new Vector3(0, 1, 1) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 1, 1) + position) * BlockScale);
+            vertices.Add((new Vector3(0, 0, 1) + position) * blockScale);
+            vertices.Add((new Vector3(1, 0, 1) + position) * blockScale);
+            vertices.Add((new Vector3(0, 1, 1) + position) * blockScale);
+            vertices.Add((new Vector3(1, 1, 1) + position) * blockScale);
 
             AddLastVerticesSquare();
         }
 
         private void GenerateBack(Vector3Int position)
         {
-            vertices.Add((new Vector3(0, 0, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(0, 1, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 0, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 1, 0) + position) * BlockScale);
+            vertices.Add((new Vector3(0, 0, 0) + position) * blockScale);
+            vertices.Add((new Vector3(0, 1, 0) + position) * blockScale);
+            vertices.Add((new Vector3(1, 0, 0) + position) * blockScale);
+            vertices.Add((new Vector3(1, 1, 0) + position) * blockScale);
 
             AddLastVerticesSquare();
         }
 
         private void GenerateTop(Vector3Int position)
         {
-            vertices.Add((new Vector3(0, 1, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(0, 1, 1) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 1, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 1, 1) + position) * BlockScale);
+            vertices.Add((new Vector3(0, 1, 0) + position) * blockScale);
+            vertices.Add((new Vector3(0, 1, 1) + position) * blockScale);
+            vertices.Add((new Vector3(1, 1, 0) + position) * blockScale);
+            vertices.Add((new Vector3(1, 1, 1) + position) * blockScale);
 
             AddLastVerticesSquare();
         }
 
         private void GenerateDown(Vector3Int position)
         {
-            vertices.Add((new Vector3(0, 0, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 0, 0) + position) * BlockScale);
-            vertices.Add((new Vector3(0, 0, 1) + position) * BlockScale);
-            vertices.Add((new Vector3(1, 0, 1) + position) * BlockScale);
+            vertices.Add((new Vector3(0, 0, 0) + position) * blockScale);
+            vertices.Add((new Vector3(1, 0, 0) + position) * blockScale);
+            vertices.Add((new Vector3(0, 0, 1) + position) * blockScale);
+            vertices.Add((new Vector3(1, 0, 1) + position) * blockScale);
 
             AddLastVerticesSquare();
         }
