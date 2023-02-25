@@ -7,12 +7,22 @@ namespace Rodlix
     public class BlockGenerator
     {
         [SerializeField] private BlockInfo blockInfo = null;
-        [SerializeField] private float frequency = 1.0f;
-        [SerializeField] private float amplitude = 1.0f;
-        [SerializeField, Range(0, 1)] private float lowerThreshold = 0;
-        [SerializeField, Range(0, 1)] private float upperThreshold = 1;
+        [SerializeField] private Octave[] octaves = null;
 
         public void Generate(Block[,,] blocks, Vector3Int size)
+        {
+            foreach (Octave octave in octaves)
+            {
+                float frequency = octave.frequency;
+                float amplitude = octave.amplitude;
+                float lowerThreshold = octave.lowerThreshold;
+                float upperThreshold = octave.upperThreshold;
+                
+                size = GenerateOctave(blocks, size, frequency, amplitude, lowerThreshold, upperThreshold);
+            }
+        }
+
+        private Vector3Int GenerateOctave(Block[,,] blocks, Vector3Int size, float frequency, float amplitude, float lowerThreshold, float upperThreshold)
         {
             for (int y = 0; y < size.y; y++)
             {
@@ -36,6 +46,8 @@ namespace Rodlix
                     }
                 }
             }
+
+            return size;
         }
     }
 }
