@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a8cac77f2f54c949b11e8ee48a51025, type: 3}
-  m_Name: Out
+  m_Name: DirtyWater
   m_EditorClassIdentifier: 
-  nameBlock: out
-  material: {fileID: 2100000, guid: 3fa9d4d5d46e50141a312d5e309cce7e, type: 2}
-  elementType: 1
-  temperature: 20
-  weight: 9
+  nameBlock: Water
+  material: {fileID: 2100000, guid: 0ea1e13f6efb1ee42b630783828cc3c3, type: 2}
+  elementType: 9
+  temperature: 15
+  weight: 1

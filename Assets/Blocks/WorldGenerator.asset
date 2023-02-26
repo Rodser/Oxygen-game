@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9189bdfcd162aa4b9b09d62eb65ae1f, type: 3}
   m_Name: WorldGenerator
   m_EditorClassIdentifier: 
-  WorldSize: {x: 22, y: 44, z: 22}
+  WorldSize: {x: 128, y: 64, z: 128}
+  isActiveBuildings: 0
   startBuilding: {fileID: 0}
+  isActiveBorder: 1
   borderBlockGenerator:
-    yLower: 0
-    sideLimiter: 0
+    amplitude: 1
+    frequency: 5
+    min: 1
+    max: 5
+    countLayers: 10
+  isActiveSoilLayers: 0
   generators:
   - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
     octaves:
@@ -44,3 +50,33 @@ MonoBehaviour:
     octaves: []
   - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
     octaves: []
+  isActiveBiomes: 1
+  biomeGenerators:
+  - blockInfo: {fileID: 11400000, guid: 2399687f1f21cfb4eb95a908badb6796, type: 2}
+    count: 3
+    frequency: 1.27
+    minSize: 8
+    maxSize: 22
+    lowerThreshold: 0
+    upperThreshold: 0.6
+  - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
+    count: 3
+    frequency: 2.55
+    minSize: 12
+    maxSize: 24
+    lowerThreshold: 0
+    upperThreshold: 1
+  - blockInfo: {fileID: 11400000, guid: 96122b6e92147b2409e0ba9ac8797ca1, type: 2}
+    count: 3
+    frequency: 1
+    minSize: 4
+    maxSize: 12
+    lowerThreshold: 0
+    upperThreshold: 1
+  - blockInfo: {fileID: 11400000, guid: 17dc3fa9ed08e4e4fa5099315f657b41, type: 2}
+    count: 3
+    frequency: 2
+    minSize: 4
+    maxSize: 14
+    lowerThreshold: 0.51
+    upperThreshold: 1

@@ -4,9 +4,13 @@
     {
         None = 0,
         Indestructible,
+        Granite,
         Dirt,
+        Sand,
         Coal,
+        Hydrogen,
         Oxygen,
-        Water
+        Water,
+        DirtyWater
     }
 }

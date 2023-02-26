@@ -7,9 +7,10 @@ namespace Rodlix
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class ChunkRenderer : MonoBehaviour
     {
-        public List<Block> currentBlocks = new List<Block>();
+        public int number = 0;
         public ElementType currentType = ElementType.None;
         public Material material = null;
+        public List<Block> currentBlocks = new List<Block>();
 
         private Mesh chunkMesh;
         private List<Vector3> vertices = null;
@@ -45,7 +46,11 @@ namespace Rodlix
                 {
                     for (int z = 0; z < size.z; z++)
                     {
-                        GenerateBlock(x, y, z);
+                        int chunckNamber = worldBlocks[x, y, z].ChunkNumber;
+                        if (chunckNamber == number)
+                        {
+                            GenerateBlock(x, y, z);
+                        }
                     }
                 }
             }
@@ -109,6 +114,10 @@ namespace Rodlix
                 position.z >= 0 && position.z < size.z)
             {
                 return worldBlocks[position.x, position.y, position.z].elementType;
+            }
+            else if (currentType == ElementType.Indestructible)
+            {
+                return currentType;
             }
             else
             {

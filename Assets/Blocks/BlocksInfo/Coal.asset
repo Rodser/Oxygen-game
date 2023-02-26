@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Coal
   m_EditorClassIdentifier: 
   nameBlock: Coal
-  prefab: {fileID: 1023272987353014447, guid: 4dec695387b9bb0408cdefd89f591f78, type: 3}
   material: {fileID: 2100000, guid: b5a5681c1aed705458ad3fe742e7bd4d, type: 2}
-  elementType: 3
+  elementType: 5
   temperature: 25
   weight: 3

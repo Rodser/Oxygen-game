@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a8cac77f2f54c949b11e8ee48a51025, type: 3}
-  m_Name: Dirt
+  m_Name: Sand
   m_EditorClassIdentifier: 
-  nameBlock: Dirt
-  material: {fileID: 2100000, guid: 3b74a14669d44d144aee2b68754ec6be, type: 2}
-  elementType: 3
+  nameBlock: Sand
+  material: {fileID: 2100000, guid: 1e3c8a480efe51840884e82d6c6d6714, type: 2}
+  elementType: 4
   temperature: 23.2
   weight: 9

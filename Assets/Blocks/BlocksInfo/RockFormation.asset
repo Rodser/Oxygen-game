@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a8cac77f2f54c949b11e8ee48a51025, type: 3}
-  m_Name: Dirt
+  m_Name: RockFormation
   m_EditorClassIdentifier: 
-  nameBlock: Dirt
-  material: {fileID: 2100000, guid: 3b74a14669d44d144aee2b68754ec6be, type: 2}
-  elementType: 3
-  temperature: 23.2
+  nameBlock: Rock
+  material: {fileID: 2100000, guid: 3fa9d4d5d46e50141a312d5e309cce7e, type: 2}
+  elementType: 1
+  temperature: 20
   weight: 9

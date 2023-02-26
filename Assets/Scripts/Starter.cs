@@ -15,7 +15,7 @@ namespace Rodlix
             Block[,,] blocks = generator.StartGeneration(baseBlocks);
 
             //  renderer
-            Vector3Int worldSize = generator.WorldSize;
+            Vector3Int worldSize = generator.GetSize();
             blockRenderer = gameObject.AddComponent<BlockRenderer>();
             blockRenderer.SetWorldSize(worldSize);
             gameObjects = blockRenderer.Generate(blocks);

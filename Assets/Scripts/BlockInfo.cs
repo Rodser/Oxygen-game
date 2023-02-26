@@ -14,9 +14,9 @@ namespace Rodlix
         [SerializeField] private float temperature = 22.5f;
         [SerializeField] private float weight = 1.0f;
 
-        public Block GetBlock()
+        public Block GetBlock(int chunckNumber)
         {            
-            Block block = new Block(nameBlock, material, elementType);
+            Block block = new Block(nameBlock, material, elementType, chunckNumber);
 
             return block;
         }

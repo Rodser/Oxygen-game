@@ -6,33 +6,64 @@ namespace Rodlix
     [CreateAssetMenu(fileName = "WorldGenerator", menuName = "MyGame/WorldGenerator", order = 0)]
     public class WorldGenerator : ScriptableObject
     {
-        [SerializeField] public Vector3Int WorldSize;
+        [SerializeField] private Vector3Int WorldSize;
+        [Space(10)]
+        [SerializeField] private bool isActiveBuildings = true;
         [SerializeField] private Construction startBuilding = null;
         [Space(10)]
+        [SerializeField] private bool isActiveBorder = true;
         [SerializeField] private BorderBlockGenerator borderBlockGenerator = null;
+        [Space(10)]
+        [SerializeField] private bool isActiveSoilLayers = true;
         [SerializeField] private BlockGenerator[] generators = null;
+        [Space(10)]
+        [SerializeField] private bool isActiveBiomes = true;
+        [SerializeField] private BiomeGenerator[] biomeGenerators = null;
 
         public Block[,,] StartGeneration(Base baseBlocks)
         {
             Block[,,] blocks = new Block[WorldSize.x, WorldSize.y, WorldSize.z];
 
-        // граница
-            borderBlockGenerator.Generate(blocks, baseBlocks, WorldSize);
-
-        // грунт
-        // жидкость
-        // газ
-            foreach (var generator in generators)
+            // граница
+            if (isActiveBorder)
             {
-                generator.Generate(blocks, WorldSize);
+                borderBlockGenerator.Generate(blocks, baseBlocks, WorldSize);
             }
 
-            SpawnBuilding(blocks);
+            if (isActiveBiomes)
+            {
+                foreach (var generator in biomeGenerators)
+                {
+                    generator.Generate(blocks, WorldSize);
+                }
+            }
+
+            // грунт
+            // жидкость
+            // газ
+            if (isActiveSoilLayers)
+            {
+                foreach (var generator in generators)
+                {
+                    generator.Generate(blocks, WorldSize);
+                }
+            }
+
+            // предметы
+            if (isActiveBuildings)
+            {
+                SpawnBuilding(blocks);
+            }
+
             Debug.Log("End WorldGenerate");
             return blocks;
         }
 
-        // предметы
+        internal Vector3Int GetSize()
+        {
+            return WorldSize;
+        }
+
         private void SpawnBuilding(Block[,,] blocks)
         {
             if(startBuilding == null) { return; }
