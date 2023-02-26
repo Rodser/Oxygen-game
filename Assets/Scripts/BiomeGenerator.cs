@@ -1,5 +1,4 @@
 ﻿using System;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Rodlix
@@ -8,20 +7,28 @@ namespace Rodlix
     public class BiomeGenerator
     {
         [SerializeField] private BlockInfo blockInfo = null;
-        [SerializeField] private float amplitude = 1f;
-        [SerializeField] private float frequency = 1f;
+        [SerializeField] private int count = 1;
+        // [SerializeField] private float amplitude = 1f;
+        [SerializeField, Range(1,3)] private float frequency = 1f;
         [SerializeField] private int minSize = 1;
         [SerializeField] private int maxSize = 10;
 
-        [Range(0, 1)] public float lowerThreshold = 0;
-        [Range(0, 1)] public float upperThreshold = 1;
+        [Range(0, 1)] public float lowerThreshold = 0f;
+        [Range(0, 1)] public float upperThreshold = 1f;
 
 
         public void Generate(Block[,,] blocks, Vector3Int size)
         {
+            for (int i = 0; i < count; i++)
+            {
+                BiomeGen(blocks, size);
+            }
+        }
+
+        private void BiomeGen(Block[,,] blocks, Vector3Int size)
+        {
             int sizeBiome = UnityEngine.Random.Range(minSize, maxSize);
 
-            //center biome
             int xc = (int)UnityEngine.Random.Range(0, size.x);
             int yc = (int)UnityEngine.Random.Range(size.y * lowerThreshold, size.y * upperThreshold);
             int zc = (int)UnityEngine.Random.Range(0, size.z);
@@ -50,9 +57,9 @@ namespace Rodlix
                         float xOf = (float)x / sizeBiome * frequency;
                         float yOf = (float)y / sizeBiome * frequency;
                         float zOf = (float)z / sizeBiome * frequency;
-                        float noiseX = Mathf.PerlinNoise(yOf, zOf) * amplitude;
-                        float noiseY = Mathf.PerlinNoise(xOf, zOf) * amplitude;
-                        float noiseZ = Mathf.PerlinNoise(xOf, yOf) * amplitude;
+                        float noiseX = Mathf.PerlinNoise(yOf, zOf); // * amplitude;
+                        float noiseY = Mathf.PerlinNoise(xOf, zOf); // * amplitude;
+                        float noiseZ = Mathf.PerlinNoise(xOf, yOf); // * amplitude;
 
                         if (y > Mathf.Lerp(ymin, yc, noiseY) && y < Mathf.Lerp(yc, ymax, noiseY) &&
                             x > Mathf.Lerp(xmin, xc, noiseX) && x < Mathf.Lerp(xc, xmax, noiseX) &&
