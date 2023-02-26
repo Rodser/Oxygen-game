@@ -7,8 +7,11 @@ namespace Rodlix
     public class BorderBlockGenerator
     {
         private BlockInfo blockInfo = null;
-        [SerializeField] private int yLower;
-        [SerializeField] private int sideLimiter;
+        [SerializeField] private float amplitude;
+        [SerializeField] private float frequency;
+        [SerializeField] private int min;
+        [SerializeField] private int max;
+
 
         public void Generate(Block[,,] blocks, Base baseBlocks, Vector3Int size)
         {
@@ -20,11 +23,16 @@ namespace Rodlix
                 {
                     for (int z = 0; z < size.z; z++)
                     {
-                        int deviation = UnityEngine.Random.Range(0, 4);
+                        float xOf = (float)x / size.x * frequency;
+                        float yOf = (float)y / size.y * frequency;
+                        float zOf = (float)z / size.z * frequency;
+                        float noiseX = Mathf.PerlinNoise(yOf, zOf) * amplitude;
+                        float noiseY = Mathf.PerlinNoise(xOf, zOf) * amplitude;
+                        float noiseZ = Mathf.PerlinNoise(xOf, yOf) * amplitude;
 
-                        if (y < yLower + deviation || 
-                            x < sideLimiter + deviation || x > size.x - (sideLimiter + deviation) || 
-                            z < sideLimiter + deviation || z > size.z - (sideLimiter + deviation))
+                        if (y < Mathf.Lerp(min, max + 1, noiseY) || 
+                            x < Mathf.Lerp(min, max + 1, noiseX) || x > Mathf.Lerp(size.x - max, size.x - min + 1, noiseX) || 
+                            z < Mathf.Lerp(min, max + 1, noiseZ) || z > Mathf.Lerp(size.z - max, size.z - min + 1, noiseZ))
                         {
                             blocks[x, y, z] = blockInfo.GetBlock();
                         }
