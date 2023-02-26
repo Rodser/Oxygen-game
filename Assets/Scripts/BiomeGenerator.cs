@@ -16,12 +16,14 @@ namespace Rodlix
         [Range(0, 1)] public float lowerThreshold = 0f;
         [Range(0, 1)] public float upperThreshold = 1f;
 
+        private static int chunkNumber = 1;
 
         public void Generate(Block[,,] blocks, Vector3Int size)
         {
             for (int i = 0; i < count; i++)
             {
                 BiomeGen(blocks, size);
+                chunkNumber++;
             }
         }
 
@@ -54,6 +56,11 @@ namespace Rodlix
                 {
                     for (int z = zmin; z < zmax; z++)
                     {
+                        if(blocks[x, y, z] != null && blocks[x, y, z].elementType == ElementType.Indestructible)
+                        {
+                            continue;
+                        }
+
                         float xOf = (float)x / sizeBiome * frequency;
                         float yOf = (float)y / sizeBiome * frequency;
                         float zOf = (float)z / sizeBiome * frequency;
@@ -65,7 +72,7 @@ namespace Rodlix
                             x > Mathf.Lerp(xmin, xc, noiseX) && x < Mathf.Lerp(xc, xmax, noiseX) &&
                             z > Mathf.Lerp(zmin, zc, noiseZ) && z < Mathf.Lerp(zc, zmax, noiseZ))
                         {
-                            blocks[x, y, z] = blockInfo.GetBlock();
+                            blocks[x, y, z] = blockInfo.GetBlock(chunkNumber);
                         }
                     }
                 }

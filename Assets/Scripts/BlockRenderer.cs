@@ -17,7 +17,7 @@ namespace Rodlix
         public GameObject[,,] Generate(Block[,,] blocks)
         {
             GameObject[,,] gameObjects = new GameObject[worldSize.x, worldSize.y, worldSize.z];
-            Block[,,] currentBlocks = blocks;
+            //Block[,,] currentBlocks = blocks;
 
             for (int y = 0; y < worldSize.y; y++)
             {
@@ -25,20 +25,21 @@ namespace Rodlix
                 {
                     for (int z = 0; z < worldSize.z; z++)
                     {
-                        Block block = currentBlocks[x, y, z];
+                        Block block = blocks[x, y, z];
 
                         if(block == null)
                         {
                             block = new Block(ElementType.None);
-                            currentBlocks[x, y, z] = block;
+                            blocks[x, y, z] = block;
                             continue;
                         }
 
                         if (CheckBlockinChunk(block) == false)
                         {
-                            ChunkRenderer chunk = new GameObject(block.nameBlock).AddComponent<ChunkRenderer>();
+                            ChunkRenderer chunk = new GameObject(block.nameBlock + block.ChunkNumber).AddComponent<ChunkRenderer>();
                             chunk.currentType = block.elementType;
                             chunk.material = block.material;
+                            chunk.number = block.ChunkNumber;
                             chunk.currentBlocks.Add(block);
 
                             chunks.Add(chunk);
@@ -50,7 +51,7 @@ namespace Rodlix
 
             foreach (ChunkRenderer chunkRenderer in chunks)
             {
-                chunkRenderer.Generate(worldSize, currentBlocks);
+                chunkRenderer.Generate(worldSize, blocks);
 
                 Debug.Log("Render chunk" + chunkRenderer.currentType);
             }
@@ -58,13 +59,11 @@ namespace Rodlix
             return gameObjects;
         }
 
-
-
         private bool CheckBlockinChunk(Block block)
         {
             foreach (ChunkRenderer chunk in chunks)
             {
-                if (chunk.currentType == block.elementType)
+                if (chunk.number == block.ChunkNumber)
                 {
                     chunk.currentBlocks.Add(block);
                     return true;

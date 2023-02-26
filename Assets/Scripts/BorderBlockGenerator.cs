@@ -34,7 +34,7 @@ namespace Rodlix
                             x < Mathf.Lerp(min, max + 1, noiseX) || x > Mathf.Lerp(size.x - max, size.x - min + 1, noiseX) || 
                             z < Mathf.Lerp(min, max + 1, noiseZ) || z > Mathf.Lerp(size.z - max, size.z - min + 1, noiseZ))
                         {
-                            blocks[x, y, z] = blockInfo.GetBlock();
+                            blocks[x, y, z] = blockInfo.GetBlock(0);
                         }
                     }
                 }
