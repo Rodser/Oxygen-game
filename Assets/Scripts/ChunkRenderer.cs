@@ -115,9 +115,13 @@ namespace Rodlix
             {
                 return worldBlocks[position.x, position.y, position.z].elementType;
             }
-            else
+            else if (currentType == ElementType.Indestructible)
             {
                 return currentType;
+            }
+            else
+            {
+                return ElementType.None;
             }
         }
 

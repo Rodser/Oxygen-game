@@ -10,15 +10,19 @@ namespace Rodlix
         [SerializeField] private float frequency;
         [SerializeField] private int min;
         [SerializeField] private int max;
+        [SerializeField] private int countLayers = 7;
 
         private BlockInfo blockInfo = null;
+        private int chunkNumber = 0;
+        private int layer = 0;
 
         public void Generate(Block[,,] blocks, Base baseBlocks, Vector3Int size)
         {
             blockInfo = baseBlocks.FindBlock(ElementType.Indestructible);
-
             for (int y = 0; y < size.y; y++)
             {
+                layer = (int)((float)y / size.y * countLayers) + countLayers;
+
                 for (int x = 0; x < size.x; x++)
                 {
                     for (int z = 0; z < size.z; z++)
@@ -34,7 +38,16 @@ namespace Rodlix
                             x < Mathf.Lerp(min, max + 1, noiseX) || x > Mathf.Lerp(size.x - max, size.x - min + 1, noiseX) || 
                             z < Mathf.Lerp(min, max + 1, noiseZ) || z > Mathf.Lerp(size.z - max, size.z - min + 1, noiseZ))
                         {
-                            blocks[x, y, z] = blockInfo.GetBlock(0);
+                            if(layer == countLayers)
+                            {
+                                chunkNumber = (int)((float)x/size.x * countLayers);
+                            }
+                            else
+                            {
+                                chunkNumber = layer;
+                            }
+
+                            blocks[x, y, z] = blockInfo.GetBlock(chunkNumber);
                         }
                     }
                 }

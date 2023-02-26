@@ -16,7 +16,7 @@ namespace Rodlix
         [Range(0, 1)] public float lowerThreshold = 0f;
         [Range(0, 1)] public float upperThreshold = 1f;
 
-        private static int chunkNumber = 1;
+        private static int chunkNumber = 100;
 
         public void Generate(Block[,,] blocks, Vector3Int size)
         {
