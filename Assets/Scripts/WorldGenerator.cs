@@ -16,6 +16,9 @@ namespace Rodlix
         [Space(10)]
         [SerializeField] private bool isActiveSoilLayers = true;
         [SerializeField] private BlockGenerator[] generators = null;
+        [Space(10)]
+        [SerializeField] private bool isActiveBiomes = true;
+        [SerializeField] private BiomeGenerator[] biomeGenerators = null;
 
         public Block[,,] StartGeneration(Base baseBlocks)
         {
@@ -25,6 +28,14 @@ namespace Rodlix
             if (isActiveBorder)
             {
                 borderBlockGenerator.Generate(blocks, baseBlocks, WorldSize);
+            }
+
+            if (isActiveBiomes)
+            {
+                foreach (var generator in biomeGenerators)
+                {
+                    generator.Generate(blocks, WorldSize);
+                }
             }
 
             // грунт

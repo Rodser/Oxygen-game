@@ -6,12 +6,12 @@ namespace Rodlix
     [Serializable]
     public class BorderBlockGenerator
     {
-        private BlockInfo blockInfo = null;
         [SerializeField] private float amplitude;
         [SerializeField] private float frequency;
         [SerializeField] private int min;
         [SerializeField] private int max;
 
+        private BlockInfo blockInfo = null;
 
         public void Generate(Block[,,] blocks, Base baseBlocks, Vector3Int size)
         {
