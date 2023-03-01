@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: WorldGenerator
   m_EditorClassIdentifier: 
   WorldSize: {x: 128, y: 64, z: 128}
-  isActiveBuildings: 0
-  startBuilding: {fileID: 0}
+  isActiveBuildings: 1
+  startBuilding: {fileID: 3293571264631682524, guid: 3d75a0e4abb02e0418f5566b4d4791e1,
+    type: 3}
   isActiveBorder: 1
   borderBlockGenerator:
     amplitude: 1
@@ -22,61 +23,83 @@ MonoBehaviour:
     min: 1
     max: 5
     countLayers: 10
-  isActiveSoilLayers: 0
+  isActiveSoilLayers: 1
   generators:
-  - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
-    octaves:
-    - frequency: 2
-      amplitude: 1
-      lowerThreshold: 0
-      upperThreshold: 0.22
-    - frequency: 4
-      amplitude: 2
-      lowerThreshold: 0.18
-      upperThreshold: 0.57
-    - frequency: 6
-      amplitude: 3
-      lowerThreshold: 0.7
-      upperThreshold: 1
+  - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
+    frequency: 5
+    amplitude: 0.7
+    upperThreshold: 0.33
   - blockInfo: {fileID: 11400000, guid: 2399687f1f21cfb4eb95a908badb6796, type: 2}
-    octaves: []
-  - blockInfo: {fileID: 11400000, guid: 96122b6e92147b2409e0ba9ac8797ca1, type: 2}
-    octaves: []
+    frequency: 7
+    amplitude: 0.7
+    upperThreshold: 0.51
+  - blockInfo: {fileID: 11400000, guid: 30cf23fd6161f6a468926c6097913c24, type: 2}
+    frequency: 4
+    amplitude: 0.7
+    upperThreshold: 0.7
   - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
-    octaves: []
-  - blockInfo: {fileID: 11400000, guid: 96122b6e92147b2409e0ba9ac8797ca1, type: 2}
-    octaves: []
-  - blockInfo: {fileID: 11400000, guid: 17dc3fa9ed08e4e4fa5099315f657b41, type: 2}
-    octaves: []
-  - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
-    octaves: []
+    frequency: 3
+    amplitude: 0.7
+    upperThreshold: 1
+  - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
+    frequency: 1
+    amplitude: 1
+    upperThreshold: 1
   isActiveBiomes: 1
   biomeGenerators:
-  - blockInfo: {fileID: 11400000, guid: 2399687f1f21cfb4eb95a908badb6796, type: 2}
-    count: 3
+  - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
+    count: 20
     frequency: 1.27
-    minSize: 8
-    maxSize: 22
+    minSize: 25
+    maxSize: 79
+    lowerThreshold: 0
+    upperThreshold: 0.7
+  - blockInfo: {fileID: 11400000, guid: 30cf23fd6161f6a468926c6097913c24, type: 2}
+    count: 25
+    frequency: 1.27
+    minSize: 20
+    maxSize: 51
+    lowerThreshold: 0
+    upperThreshold: 1
+  - blockInfo: {fileID: 11400000, guid: 2399687f1f21cfb4eb95a908badb6796, type: 2}
+    count: 14
+    frequency: 1.27
+    minSize: 6
+    maxSize: 27
     lowerThreshold: 0
     upperThreshold: 0.6
   - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
-    count: 3
+    count: 34
     frequency: 2.55
-    minSize: 12
-    maxSize: 24
-    lowerThreshold: 0
+    minSize: 10
+    maxSize: 38
+    lowerThreshold: 0.4
     upperThreshold: 1
   - blockInfo: {fileID: 11400000, guid: 96122b6e92147b2409e0ba9ac8797ca1, type: 2}
-    count: 3
+    count: 10
     frequency: 1
     minSize: 4
-    maxSize: 12
+    maxSize: 18
+    lowerThreshold: 0
+    upperThreshold: 1
+  - blockInfo: {fileID: 11400000, guid: 8acad05a8ab55a24bb19dd2037d676b6, type: 2}
+    count: 18
+    frequency: 1
+    minSize: 4
+    maxSize: 10
     lowerThreshold: 0
     upperThreshold: 1
   - blockInfo: {fileID: 11400000, guid: 17dc3fa9ed08e4e4fa5099315f657b41, type: 2}
-    count: 3
+    count: 12
     frequency: 2
     minSize: 4
-    maxSize: 14
+    maxSize: 20
     lowerThreshold: 0.51
+    upperThreshold: 1
+  - blockInfo: {fileID: 11400000, guid: dae165b195cccbd478011b36b84a6140, type: 2}
+    count: 16
+    frequency: 2
+    minSize: 2
+    maxSize: 14
+    lowerThreshold: 0.25
     upperThreshold: 1

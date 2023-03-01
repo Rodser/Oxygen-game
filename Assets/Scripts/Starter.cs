@@ -10,7 +10,7 @@ namespace Rodlix
         private BlockRenderer blockRenderer = null;
         private GameObject[,,] gameObjects = null;
 
-        private void Start()
+        private async void Start()
         {
             Block[,,] blocks = generator.StartGeneration(baseBlocks);
 
@@ -18,7 +18,7 @@ namespace Rodlix
             Vector3Int worldSize = generator.GetSize();
             blockRenderer = gameObject.AddComponent<BlockRenderer>();
             blockRenderer.SetWorldSize(worldSize);
-            gameObjects = blockRenderer.Generate(blocks);
+            await blockRenderer.Generate(blocks);
 
             //  player
         }

@@ -15,7 +15,7 @@ namespace Rodlix
         [SerializeField] private BorderBlockGenerator borderBlockGenerator = null;
         [Space(10)]
         [SerializeField] private bool isActiveSoilLayers = true;
-        [SerializeField] private BlockGenerator[] generators = null;
+        [SerializeField] private SoilGenerator[] generators = null;
         [Space(10)]
         [SerializeField] private bool isActiveBiomes = true;
         [SerializeField] private BiomeGenerator[] biomeGenerators = null;
