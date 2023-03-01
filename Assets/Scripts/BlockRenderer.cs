@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Rodlix
@@ -14,10 +15,8 @@ namespace Rodlix
             chunks= new List<ChunkRenderer>();
         }
 
-        public GameObject[,,] Generate(Block[,,] blocks)
+        public async Task Generate(Block[,,] blocks)
         {
-            GameObject[,,] gameObjects = new GameObject[worldSize.x, worldSize.y, worldSize.z];
-            //Block[,,] currentBlocks = blocks;
 
             for (int y = 0; y < worldSize.y; y++)
             {
@@ -51,12 +50,10 @@ namespace Rodlix
 
             foreach (ChunkRenderer chunkRenderer in chunks)
             {
-                chunkRenderer.Generate(worldSize, blocks);
+                await chunkRenderer.Generate(worldSize, blocks);
 
                 Debug.Log("Render chunk" + chunkRenderer.currentType);
             }
-
-            return gameObjects;
         }
 
         private bool CheckBlockinChunk(Block block)

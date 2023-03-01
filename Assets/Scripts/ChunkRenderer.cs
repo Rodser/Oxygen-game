@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Rodlix
@@ -21,7 +22,7 @@ namespace Rodlix
 
         public float BlockScale { get; private set; } = 1f;
 
-        public void Generate(Vector3Int size, Block[,,] worldBlocks)
+        public async Task Generate(Vector3Int size, Block[,,] worldBlocks)
         {
             this.size = size;
             this.worldBlocks = worldBlocks;
@@ -31,11 +32,13 @@ namespace Rodlix
             uvs = new List<Vector2>();
             triangles = new List<int>();
 
-            RegenerateMesh();
+            await RegenerateMesh();
         }
 
-        private void RegenerateMesh()
+        private async Task RegenerateMesh()
         {
+            await Task.Delay(100);
+
             vertices.Clear();
             // uvs.Clear();
             triangles.Clear();

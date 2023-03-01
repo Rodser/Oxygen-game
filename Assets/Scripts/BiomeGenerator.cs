@@ -8,7 +8,6 @@ namespace Rodlix
     {
         [SerializeField] private BlockInfo blockInfo = null;
         [SerializeField] private int count = 1;
-        // [SerializeField] private float amplitude = 1f;
         [SerializeField, Range(1,3)] private float frequency = 1f;
         [SerializeField] private int minSize = 1;
         [SerializeField] private int maxSize = 10;
@@ -16,7 +15,7 @@ namespace Rodlix
         [Range(0, 1)] public float lowerThreshold = 0f;
         [Range(0, 1)] public float upperThreshold = 1f;
 
-        private static int chunkNumber = 100;
+        private static int chunkNumber = 1000;
 
         public void Generate(Block[,,] blocks, Vector3Int size)
         {
@@ -56,7 +55,7 @@ namespace Rodlix
                 {
                     for (int z = zmin; z < zmax; z++)
                     {
-                        if(blocks[x, y, z] != null && blocks[x, y, z].elementType == ElementType.Indestructible)
+                        if (blocks[x, y, z] != null && blocks[x, y, z].elementType == ElementType.Indestructible)
                         {
                             continue;
                         }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8cac77f2f54c949b11e8ee48a51025, type: 3}
   m_Name: DirtyWater
   m_EditorClassIdentifier: 
-  nameBlock: Water
+  nameBlock: DirtyWater
   material: {fileID: 2100000, guid: 0ea1e13f6efb1ee42b630783828cc3c3, type: 2}
   elementType: 9
   temperature: 15
