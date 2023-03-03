@@ -16,7 +16,7 @@ MonoBehaviour:
   isActiveBuildings: 1
   startBuilding: {fileID: 3293571264631682524, guid: 3d75a0e4abb02e0418f5566b4d4791e1,
     type: 3}
-  isActiveBorder: 1
+  isActiveBorder: 0
   borderBlockGenerator:
     amplitude: 1
     frequency: 5
@@ -26,26 +26,26 @@ MonoBehaviour:
   isActiveSoilLayers: 1
   generators:
   - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
-    frequency: 5
+    frequency: 1
     amplitude: 0.7
     upperThreshold: 0.33
   - blockInfo: {fileID: 11400000, guid: 2399687f1f21cfb4eb95a908badb6796, type: 2}
-    frequency: 7
+    frequency: 1
     amplitude: 0.7
     upperThreshold: 0.51
   - blockInfo: {fileID: 11400000, guid: 30cf23fd6161f6a468926c6097913c24, type: 2}
-    frequency: 4
+    frequency: 1
     amplitude: 0.7
     upperThreshold: 0.7
   - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
-    frequency: 3
+    frequency: 1
     amplitude: 0.7
     upperThreshold: 1
   - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
     frequency: 1
     amplitude: 1
     upperThreshold: 1
-  isActiveBiomes: 1
+  isActiveBiomes: 0
   biomeGenerators:
   - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
     count: 20

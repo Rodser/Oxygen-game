@@ -11,6 +11,8 @@
         Hydrogen,
         Oxygen,
         Water,
-        DirtyWater
+        DirtyWater,
+        Clay,
+        Limestone
     }
 }
