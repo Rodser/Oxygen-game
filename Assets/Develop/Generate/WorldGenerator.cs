@@ -70,13 +70,13 @@ namespace Rodlix
             Vector3Int position = new Vector3Int(WorldSize.x/2, WorldSize.y/2, WorldSize.z/2);
             GameObject obj = Instantiate(startBuilding.gameObject, position, Quaternion.identity);
 
-            int minXPos = position.x + startBuilding.minPosition.x;
-            int maxXPos = position.x + startBuilding.maxPosition.x + 1;
-            int minYPos = position.y + startBuilding.minPosition.y;
-            int maxYPos = position.y + startBuilding.maxPosition.y + 1;
-            int minZPos = position.z + startBuilding.minPosition.z;
-            int maxZPos = position.z + startBuilding.maxPosition.z + 1;
-
+            int minXPos = position.x + (int)startBuilding.minPoint.transform.position.x;
+            int maxXPos = position.x + (int)startBuilding.maxPoint.transform.position.x + 1;
+            int minYPos = position.y + (int)startBuilding.minPoint.transform.position.y;
+            int maxYPos = position.y + (int)startBuilding.maxPoint.transform.position.y + 1;
+            int minZPos = position.z + (int)startBuilding.minPoint.transform.position.z;
+            int maxZPos = position.z + (int)startBuilding.maxPoint.transform.position.z + 1;
+            
             for (int x = minXPos; x < maxXPos; x++)
             {
                 for (int y = minYPos; y < maxYPos; y++)

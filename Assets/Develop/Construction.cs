@@ -4,7 +4,13 @@ namespace Rodlix
 {
     public class Construction : MonoBehaviour
     {
-        public Vector3Int minPosition;
-        public Vector3Int maxPosition;
+        public GameObject minPoint;
+        public GameObject maxPoint;
+        public GameObject camPoint;
+
+        private void Start()
+        {
+            Camera.main.transform.position = camPoint.transform.position;
+        }
     }
 }

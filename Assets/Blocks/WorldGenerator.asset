@@ -23,7 +23,7 @@ MonoBehaviour:
     min: 1
     max: 5
     countLayers: 10
-  isActiveSoilLayers: 1
+  isActiveSoilLayers: 0
   generators:
   - blockInfo: {fileID: 11400000, guid: e4015dc88d254f14a8a10c20b134444f, type: 2}
     frequency: 4
@@ -61,7 +61,7 @@ MonoBehaviour:
     frequency: 1
     amplitude: 0
     threshold: 1
-  isActiveBiomes: 1
+  isActiveBiomes: 0
   biomeGenerators:
   - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
     count: 20
