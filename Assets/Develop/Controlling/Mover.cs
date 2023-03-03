@@ -1,5 +1,4 @@
-﻿using UnityEditor.Search;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Rodlix
 {
@@ -24,9 +23,8 @@ namespace Rodlix
 
         private void Move()
         {
-            Vector3 inputMove = inputActions.Camera.Move.ReadValue<Vector3>();
-            Vector3 moveDirection = new Vector3(inputMove.x, inputMove.y, inputMove.z);
-            transform.position += moveSpeed * Time.deltaTime * moveDirection;
+            Vector2 inputMove = inputActions.Camera.Move.ReadValue<Vector2>();
+            transform.Translate(inputMove.x, 0, inputMove.y);
         }
 
         private void LookAt()
