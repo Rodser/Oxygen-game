@@ -20,7 +20,7 @@ namespace Rodlix
         [SerializeField] private bool isActiveBiomes = true;
         [SerializeField] private BiomeGenerator[] biomeGenerators = null;
 
-        public Block[,,] StartGeneration(Base baseBlocks)
+        public Block[,,] StartGeneration(Base baseBlocks, GameObject observer)
         {
             Block[,,] blocks = new Block[WorldSize.x, WorldSize.y, WorldSize.z];
 
@@ -52,7 +52,7 @@ namespace Rodlix
             // предметы
             if (isActiveBuildings)
             {
-                SpawnBuilding(blocks);
+                SpawnBuilding(blocks, observer);
             }
 
             Debug.Log("End WorldGenerate");
@@ -64,18 +64,19 @@ namespace Rodlix
             return WorldSize;
         }
 
-        private void SpawnBuilding(Block[,,] blocks)
+        private void SpawnBuilding(Block[,,] blocks, GameObject observer)
         {
             if(startBuilding == null) { return; }
             Vector3Int position = new Vector3Int(WorldSize.x/2, WorldSize.y/2, WorldSize.z/2);
-            GameObject obj = Instantiate(startBuilding.gameObject, position, Quaternion.identity);
+            Construction building = Instantiate(startBuilding, position, Quaternion.identity);
+            building.SetObserver(observer);
 
-            int minXPos = position.x + (int)startBuilding.minPoint.transform.position.x;
-            int maxXPos = position.x + (int)startBuilding.maxPoint.transform.position.x + 1;
-            int minYPos = position.y + (int)startBuilding.minPoint.transform.position.y;
-            int maxYPos = position.y + (int)startBuilding.maxPoint.transform.position.y + 1;
-            int minZPos = position.z + (int)startBuilding.minPoint.transform.position.z;
-            int maxZPos = position.z + (int)startBuilding.maxPoint.transform.position.z + 1;
+            int minXPos = position.x + (int)startBuilding.MinPoint.transform.position.x;
+            int maxXPos = position.x + (int)startBuilding.MaxPoint.transform.position.x + 1;
+            int minYPos = position.y + (int)startBuilding.MinPoint.transform.position.y;
+            int maxYPos = position.y + (int)startBuilding.MaxPoint.transform.position.y + 1;
+            int minZPos = position.z + (int)startBuilding.MinPoint.transform.position.z;
+            int maxZPos = position.z + (int)startBuilding.MaxPoint.transform.position.z + 1;
             
             for (int x = minXPos; x < maxXPos; x++)
             {

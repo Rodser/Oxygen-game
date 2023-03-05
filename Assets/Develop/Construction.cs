@@ -1,16 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Rodlix
 {
     public class Construction : MonoBehaviour
     {
-        public GameObject minPoint;
-        public GameObject maxPoint;
-        public GameObject camPoint;
+        [SerializeField] private GameObject minPoint;
+        [SerializeField] private GameObject maxPoint;
+        [SerializeField] private GameObject camPoint;
 
-        private void Start()
+        public GameObject MinPoint { get => minPoint; }
+        public GameObject MaxPoint { get => maxPoint; }
+        public GameObject CamPoint { get => camPoint; }
+
+        internal void SetObserver(GameObject observer)
         {
-            Camera.main.transform.position = camPoint.transform.position;
+            observer.transform.position = camPoint.transform.position;
         }
+
     }
 }
