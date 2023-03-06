@@ -22,7 +22,7 @@ namespace Rodlix
         
         private Construction building;
 
-        public Block[,,] StartGeneration(Base baseBlocks, GameObject observer)
+        public Block[,,] StartGeneration(Base baseBlocks, vThirdPersonCamera observer)
         {
             Block[,,] blocks = new Block[WorldSize.x, WorldSize.y, WorldSize.z];
 

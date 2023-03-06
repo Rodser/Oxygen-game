@@ -16,11 +16,12 @@ namespace Rodlix
 
         public int ChunkNumber { get => chunkNumber; private set => chunkNumber = value; }
 
-        public Block(string nameBlock, Material material, ElementType elementType, int chunckNumber)
+        public Block(string nameBlock, Material material, ElementType elementType, Vector3Int positionInt, int chunckNumber)
         {
             this.nameBlock = nameBlock;
             this.elementType = elementType;
             this.material = material;
+            this.positionInt = positionInt;
             ChunkNumber = chunckNumber;
         }
 

@@ -56,6 +56,14 @@ namespace Rodlix
             }
         }
 
+        public async Task DestroyBlock(Block block)
+        {
+            foreach (ChunkRenderer chunk in chunks)
+            {
+                await chunk.DestroyBlock(block);
+            }
+        }
+
         private bool CheckBlockinChunk(Block block)
         {
             foreach (ChunkRenderer chunk in chunks)

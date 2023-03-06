@@ -35,6 +35,29 @@ namespace Rodlix
             await RegenerateMesh();
         }
 
+        public async Task DestroyBlock(Block selectedBlock)
+        {
+            if (selectedBlock.elementType == ElementType.None) return;
+
+            bool found = false;
+            foreach (Block block in currentBlocks)
+            {
+                if (block == selectedBlock)
+                {
+                    Debug.Log("Destroy block " + selectedBlock.nameBlock + selectedBlock.positionInt);
+                    found = true;
+                    break;
+                }
+            }
+            if (found)
+            {
+                    worldBlocks[selectedBlock.positionInt.x, selectedBlock.positionInt.y, selectedBlock.positionInt.z] = new Block(ElementType.None);
+                    currentBlocks.Remove(selectedBlock);
+
+                    await RegenerateMesh();
+            }
+        }
+
         private async Task RegenerateMesh()
         {
             await Task.Delay(50);

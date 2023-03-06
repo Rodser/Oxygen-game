@@ -56,6 +56,8 @@ public class vThirdPersonCamera : MonoBehaviour
     private float cullingHeight = 0.2f;
     private float cullingMinDist = 0.1f;
 
+    public Camera Camera { get => _camera; }
+
     #endregion
 
     void Start()

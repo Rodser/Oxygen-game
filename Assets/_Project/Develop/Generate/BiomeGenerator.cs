@@ -71,7 +71,7 @@ namespace Rodlix
                             x > Mathf.Lerp(xmin, xc, noiseX) && x < Mathf.Lerp(xc, xmax, noiseX) &&
                             z > Mathf.Lerp(zmin, zc, noiseZ) && z < Mathf.Lerp(zc, zmax, noiseZ))
                         {
-                            blocks[x, y, z] = blockInfo.GetBlock(chunkNumber);
+                            blocks[x, y, z] = blockInfo.GetBlock(chunkNumber, new Vector3Int(x, y, z));
                         }
                     }
                 }
