@@ -4,6 +4,7 @@ namespace Rodlix
 {
     public class Starter : MonoBehaviour
     {
+        [SerializeField] private GameObject observer = null;
         [SerializeField] private WorldGenerator generator = null;
         [SerializeField] private Base baseBlocks = null;
 
@@ -12,7 +13,7 @@ namespace Rodlix
 
         private async void Start()
         {
-            Block[,,] blocks = generator.StartGeneration(baseBlocks);
+            Block[,,] blocks = generator.StartGeneration(baseBlocks, observer);
 
             //  renderer
             Vector3Int worldSize = generator.GetSize();

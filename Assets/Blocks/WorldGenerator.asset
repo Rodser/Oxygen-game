@@ -16,7 +16,7 @@ MonoBehaviour:
   isActiveBuildings: 1
   startBuilding: {fileID: 3293571264631682524, guid: 3d75a0e4abb02e0418f5566b4d4791e1,
     type: 3}
-  isActiveBorder: 0
+  isActiveBorder: 1
   borderBlockGenerator:
     amplitude: 1
     frequency: 5
@@ -25,65 +25,81 @@ MonoBehaviour:
     countLayers: 10
   isActiveSoilLayers: 1
   generators:
-  - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
-    frequency: 1
-    amplitude: 0.7
-    upperThreshold: 0.33
+  - blockInfo: {fileID: 11400000, guid: e4015dc88d254f14a8a10c20b134444f, type: 2}
+    frequency: 4
+    amplitude: 23
+    threshold: 0.151
+  - blockInfo: {fileID: 11400000, guid: e9c56e5b29f97fe43b827031211e91a3, type: 2}
+    frequency: 5
+    amplitude: 29
+    threshold: 0.26
   - blockInfo: {fileID: 11400000, guid: 2399687f1f21cfb4eb95a908badb6796, type: 2}
-    frequency: 1
-    amplitude: 0.7
-    upperThreshold: 0.51
-  - blockInfo: {fileID: 11400000, guid: 30cf23fd6161f6a468926c6097913c24, type: 2}
-    frequency: 1
-    amplitude: 0.7
-    upperThreshold: 0.7
-  - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
-    frequency: 1
-    amplitude: 0.7
-    upperThreshold: 1
+    frequency: 7
+    amplitude: 20
+    threshold: 0.315
+  - blockInfo: {fileID: 11400000, guid: e9c56e5b29f97fe43b827031211e91a3, type: 2}
+    frequency: 5
+    amplitude: 25
+    threshold: 0.452
   - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
+    frequency: 9
+    amplitude: 22
+    threshold: 0.507
+  - blockInfo: {fileID: 11400000, guid: e9c56e5b29f97fe43b827031211e91a3, type: 2}
+    frequency: 5
+    amplitude: 21
+    threshold: 0.658
+  - blockInfo: {fileID: 11400000, guid: 30cf23fd6161f6a468926c6097913c24, type: 2}
+    frequency: 3
+    amplitude: 22
+    threshold: 0.815
+  - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
+    frequency: 5
+    amplitude: 22
+    threshold: 0.952
+  - blockInfo: {fileID: 11400000, guid: 8acad05a8ab55a24bb19dd2037d676b6, type: 2}
     frequency: 1
-    amplitude: 1
-    upperThreshold: 1
-  isActiveBiomes: 0
+    amplitude: 0
+    threshold: 1
+  isActiveBiomes: 1
   biomeGenerators:
   - blockInfo: {fileID: 11400000, guid: f24dafe8703bda448bbf90b36923a138, type: 2}
     count: 20
-    frequency: 1.27
+    frequency: 1.4
     minSize: 25
-    maxSize: 79
+    maxSize: 55
     lowerThreshold: 0
-    upperThreshold: 0.7
+    upperThreshold: 0.506
   - blockInfo: {fileID: 11400000, guid: 30cf23fd6161f6a468926c6097913c24, type: 2}
     count: 25
-    frequency: 1.27
+    frequency: 1.38
     minSize: 20
     maxSize: 51
-    lowerThreshold: 0
+    lowerThreshold: 0.099
     upperThreshold: 1
   - blockInfo: {fileID: 11400000, guid: 2399687f1f21cfb4eb95a908badb6796, type: 2}
     count: 14
     frequency: 1.27
     minSize: 6
-    maxSize: 27
+    maxSize: 25
     lowerThreshold: 0
     upperThreshold: 0.6
   - blockInfo: {fileID: 11400000, guid: f9fc06375eddc4a42ad4776a2e1c68e7, type: 2}
-    count: 34
+    count: 25
     frequency: 2.55
     minSize: 10
-    maxSize: 38
+    maxSize: 35
     lowerThreshold: 0.4
     upperThreshold: 1
   - blockInfo: {fileID: 11400000, guid: 96122b6e92147b2409e0ba9ac8797ca1, type: 2}
     count: 10
-    frequency: 1
+    frequency: 1.2
     minSize: 4
     maxSize: 18
     lowerThreshold: 0
     upperThreshold: 1
   - blockInfo: {fileID: 11400000, guid: 8acad05a8ab55a24bb19dd2037d676b6, type: 2}
-    count: 18
+    count: 15
     frequency: 1
     minSize: 4
     maxSize: 10
@@ -102,4 +118,18 @@ MonoBehaviour:
     minSize: 2
     maxSize: 14
     lowerThreshold: 0.25
+    upperThreshold: 0.913
+  - blockInfo: {fileID: 11400000, guid: e9c56e5b29f97fe43b827031211e91a3, type: 2}
+    count: 15
+    frequency: 1.74
+    minSize: 2
+    maxSize: 14
+    lowerThreshold: 0.25
+    upperThreshold: 0.86
+  - blockInfo: {fileID: 11400000, guid: e4015dc88d254f14a8a10c20b134444f, type: 2}
+    count: 5
+    frequency: 1.6
+    minSize: 2
+    maxSize: 10
+    lowerThreshold: 0
     upperThreshold: 1

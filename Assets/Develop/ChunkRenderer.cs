@@ -37,7 +37,7 @@ namespace Rodlix
 
         private async Task RegenerateMesh()
         {
-            await Task.Delay(100);
+            await Task.Delay(50);
 
             vertices.Clear();
             // uvs.Clear();
