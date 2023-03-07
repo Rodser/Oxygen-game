@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RockFormation
   m_EditorClassIdentifier: 
   nameBlock: Rock
-  material: {fileID: 2100000, guid: 3fa9d4d5d46e50141a312d5e309cce7e, type: 2}
+  material: {fileID: 2100000, guid: 8d530ffe6c4968843806085897955b9d, type: 2}
   elementType: 1
   temperature: 18
   weight: 10
