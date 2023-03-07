@@ -55,7 +55,7 @@ namespace Rodlix
                 {
                     for (int z = zmin; z < zmax; z++)
                     {
-                        if (blocks[x, y, z] != null && blocks[x, y, z].elementType == ElementType.Indestructible)
+                        if (blocks[x, y, z] != null && blocks[x, y, z].ElementType == ElementType.Indestructible)
                         {
                             continue;
                         }

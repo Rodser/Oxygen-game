@@ -37,21 +37,21 @@ namespace Rodlix
 
         public async Task DestroyBlock(Block selectedBlock)
         {
-            if (selectedBlock.elementType == ElementType.None) return;
+            if (selectedBlock.ElementType == ElementType.None) return;
 
             bool found = false;
             foreach (Block block in currentBlocks)
             {
                 if (block == selectedBlock)
                 {
-                    Debug.Log("Destroy block " + selectedBlock.nameBlock + selectedBlock.positionInt);
+                    Debug.Log("Destroy block " + selectedBlock.NameBlock + selectedBlock.PositionInt);
                     found = true;
                     break;
                 }
             }
             if (found)
             {
-                    worldBlocks[selectedBlock.positionInt.x, selectedBlock.positionInt.y, selectedBlock.positionInt.z] = new Block(ElementType.None);
+                    worldBlocks[selectedBlock.PositionInt.x, selectedBlock.PositionInt.y, selectedBlock.PositionInt.z] = new Block(ElementType.None);
                     currentBlocks.Remove(selectedBlock);
 
                     await RegenerateMesh();
@@ -98,7 +98,7 @@ namespace Rodlix
         private void GenerateBlock(int x, int y, int z)
         {
             var blockPosition = new Vector3Int(x, y, z);
-            ElementType blockType = worldBlocks[x, y, z].elementType;
+            ElementType blockType = worldBlocks[x, y, z].ElementType;
             if (blockType != currentType) return;
 
             if (GetTypeAtPosition(blockPosition + Vector3Int.right) != currentType)
@@ -139,7 +139,7 @@ namespace Rodlix
                 position.y >= 0 && position.y < size.y &&
                 position.z >= 0 && position.z < size.z)
             {
-                return worldBlocks[position.x, position.y, position.z].elementType;
+                return worldBlocks[position.x, position.y, position.z].ElementType;
             }
             else if (currentType == ElementType.Indestructible)
             {
