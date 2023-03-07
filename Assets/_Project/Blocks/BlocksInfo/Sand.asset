@@ -15,5 +15,6 @@ MonoBehaviour:
   nameBlock: Sand
   material: {fileID: 2100000, guid: 1e3c8a480efe51840884e82d6c6d6714, type: 2}
   elementType: 4
-  temperature: 23.2
-  weight: 9
+  temperature: 25
+  weight: 7
+  description: Sand is a granular material composed of finely divided mineral particles.

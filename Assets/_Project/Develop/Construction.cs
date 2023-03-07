@@ -7,17 +7,16 @@ namespace Rodlix
     {
         [SerializeField] private GameObject minPoint;
         [SerializeField] private GameObject maxPoint;
-        [SerializeField] private GameObject camPoint;
+        [SerializeField] private GameObject player;
 
         public GameObject MinPoint { get => minPoint; }
         public GameObject MaxPoint { get => maxPoint; }
-        public GameObject CamPoint { get => camPoint; }
 
-        internal void SetObserver(GameObject observer)
+        internal void SetObserver(vThirdPersonCamera observer)
         {
             if (observer == null) return;
 
-            observer.transform.position = camPoint.transform.position;
+            observer.SetTarget(player.transform);
         }
 
     }

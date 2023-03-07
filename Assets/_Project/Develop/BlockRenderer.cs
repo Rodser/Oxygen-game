@@ -35,9 +35,9 @@ namespace Rodlix
 
                         if (CheckBlockinChunk(block) == false)
                         {
-                            ChunkRenderer chunk = new GameObject(block.nameBlock + block.ChunkNumber).AddComponent<ChunkRenderer>();
-                            chunk.currentType = block.elementType;
-                            chunk.material = block.material;
+                            ChunkRenderer chunk = new GameObject(block.NameBlock + block.ChunkNumber).AddComponent<ChunkRenderer>();
+                            chunk.currentType = block.ElementType;
+                            chunk.material = block.Material;
                             chunk.number = block.ChunkNumber;
                             chunk.currentBlocks.Add(block);
 
@@ -53,6 +53,14 @@ namespace Rodlix
                 await chunkRenderer.Generate(worldSize, blocks);
 
                 Debug.Log("Render chunk" + chunkRenderer.currentType);
+            }
+        }
+
+        public async Task DestroyBlock(Block block)
+        {
+            foreach (ChunkRenderer chunk in chunks)
+            {
+                await chunk.DestroyBlock(block);
             }
         }
 

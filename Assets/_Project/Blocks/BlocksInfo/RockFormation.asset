@@ -15,5 +15,6 @@ MonoBehaviour:
   nameBlock: Rock
   material: {fileID: 2100000, guid: 3fa9d4d5d46e50141a312d5e309cce7e, type: 2}
   elementType: 1
-  temperature: 20
-  weight: 9
+  temperature: 18
+  weight: 10
+  description: Indestructible

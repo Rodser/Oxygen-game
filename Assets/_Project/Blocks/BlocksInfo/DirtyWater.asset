@@ -15,5 +15,6 @@ MonoBehaviour:
   nameBlock: DirtyWater
   material: {fileID: 2100000, guid: 0ea1e13f6efb1ee42b630783828cc3c3, type: 2}
   elementType: 9
-  temperature: 15
-  weight: 1
+  temperature: 27
+  weight: 2
+  description: Water with a dirt

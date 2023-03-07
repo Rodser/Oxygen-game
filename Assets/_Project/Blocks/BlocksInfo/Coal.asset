@@ -15,5 +15,6 @@ MonoBehaviour:
   nameBlock: Coal
   material: {fileID: 2100000, guid: b5a5681c1aed705458ad3fe742e7bd4d, type: 2}
   elementType: 5
-  temperature: 25
-  weight: 3
+  temperature: 33
+  weight: 5
+  description: Coal is a combustible black or brownish-black sedimentary rock

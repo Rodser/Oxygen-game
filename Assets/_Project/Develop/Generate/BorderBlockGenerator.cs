@@ -47,7 +47,7 @@ namespace Rodlix
                                 chunkNumber = layer;
                             }
 
-                            blocks[x, y, z] = blockInfo.GetBlock(chunkNumber);
+                            blocks[x, y, z] = blockInfo.GetBlock(chunkNumber, new Vector3Int(x, y, z));
                         }
                     }
                 }

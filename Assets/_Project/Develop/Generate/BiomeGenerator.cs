@@ -55,7 +55,7 @@ namespace Rodlix
                 {
                     for (int z = zmin; z < zmax; z++)
                     {
-                        if (blocks[x, y, z] != null && blocks[x, y, z].elementType == ElementType.Indestructible)
+                        if (blocks[x, y, z] != null && blocks[x, y, z].ElementType == ElementType.Indestructible)
                         {
                             continue;
                         }
@@ -71,7 +71,7 @@ namespace Rodlix
                             x > Mathf.Lerp(xmin, xc, noiseX) && x < Mathf.Lerp(xc, xmax, noiseX) &&
                             z > Mathf.Lerp(zmin, zc, noiseZ) && z < Mathf.Lerp(zc, zmax, noiseZ))
                         {
-                            blocks[x, y, z] = blockInfo.GetBlock(chunkNumber);
+                            blocks[x, y, z] = blockInfo.GetBlock(chunkNumber, new Vector3Int(x, y, z));
                         }
                     }
                 }

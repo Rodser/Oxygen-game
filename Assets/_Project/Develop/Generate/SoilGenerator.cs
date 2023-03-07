@@ -36,7 +36,7 @@ namespace Rodlix
 
                             if (y < Mathf.Lerp(downThreshold, upperThreshold, noise))
                             {
-                                blocks[x, y, z] = blockInfo.GetBlock(chunkNumber);
+                                blocks[x, y, z] = blockInfo.GetBlock(chunkNumber, new Vector3Int(x,y,z));
                                 CheckCapacityofBlocks();
                             }
                         }
