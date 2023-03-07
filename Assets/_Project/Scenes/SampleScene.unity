@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20754719, g: 0.19286224, b: 0.19286224, a: 0.392}
+  m_Color: {r: 0.20754719, g: 0.19286224, b: 0.19286224, a: 0.6392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -485,6 +485,7 @@ MonoBehaviour:
   observer: {fileID: 2035969727}
   generator: {fileID: 11400000, guid: 5bd06aae62f61154eabd2f8e1bc487b9, type: 2}
   baseBlocks: {fileID: 11400000, guid: 3841b14bad3bbfc428c932f42a7b167f, type: 2}
+  blockScale: 0.6
   infoOFBlock:
     InfoPanel: {fileID: 358199815}
     Name: {fileID: 1946881450}
@@ -662,7 +663,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -43.110664, y: -8.102655, z: -47.981155, w: -24.776058}
+  m_margin: {x: -34.935966, y: -8.102655, z: -36.770187, w: -24.776058}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1211,7 +1212,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -44.445793, y: -49.636387, z: 44.07496, w: 56.792145}
+  m_margin: {x: -33.243828, y: -49.636387, z: 22.912838, w: 56.792145}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

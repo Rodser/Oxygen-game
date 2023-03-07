@@ -8,11 +8,13 @@ namespace Rodlix
     {
         private Vector3Int worldSize;
         private List<ChunkRenderer> chunks;
+        private float blockScale;
 
-        public void SetWorldSize(Vector3Int worldSize)
+        public void SetWorldSize(Vector3Int worldSize, float scale)
         {
             this.worldSize = worldSize;
-            chunks= new List<ChunkRenderer>();
+            this.blockScale = scale;
+            chunks = new List<ChunkRenderer>();
         }
 
         public async Task Generate(Block[,,] blocks)
@@ -50,7 +52,7 @@ namespace Rodlix
 
             foreach (ChunkRenderer chunkRenderer in chunks)
             {
-                await chunkRenderer.Generate(worldSize, blocks);
+                await chunkRenderer.Generate(worldSize, blocks, blockScale);
 
                 Debug.Log("Render chunk" + chunkRenderer.currentType);
             }

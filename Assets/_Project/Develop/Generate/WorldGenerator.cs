@@ -22,7 +22,7 @@ namespace Rodlix
         
         private Construction building;
 
-        public Block[,,] StartGeneration(Base baseBlocks, vThirdPersonCamera observer)
+        public Block[,,] StartGeneration(Base baseBlocks, vThirdPersonCamera observer, float scale)
         {
             Block[,,] blocks = new Block[WorldSize.x, WorldSize.y, WorldSize.z];
 
@@ -54,7 +54,7 @@ namespace Rodlix
             // предметы
             if (isActiveBuildings)
             {
-                building = SpawnBuilding(blocks);
+                building = SpawnBuilding(blocks, scale);
             }
 
             if (building != null)
@@ -71,17 +71,22 @@ namespace Rodlix
             return WorldSize;
         }
 
-        private Construction SpawnBuilding(Block[,,] blocks)
+        private Construction SpawnBuilding(Block[,,] blocks, float scale)
         {
             if(startBuilding == null) { return null; }
-            Vector3Int position = new Vector3Int(WorldSize.x/2, WorldSize.y/2, WorldSize.z/2);
-            Construction building = Instantiate(startBuilding, position, Quaternion.identity);
+
+            int wsx = (int)(WorldSize.x * 0.5f);
+            int wsy = (int)(WorldSize.y * 0.5f);
+            int wsz = (int)(WorldSize.z * 0.5f);
+
+            Vector3Int position = new Vector3Int(wsx, wsy, wsz);
 
             int minXPos = position.x + (int)startBuilding.MinPoint.transform.position.x;
-            int maxXPos = position.x + (int)startBuilding.MaxPoint.transform.position.x + 1;
             int minYPos = position.y + (int)startBuilding.MinPoint.transform.position.y;
-            int maxYPos = position.y + (int)startBuilding.MaxPoint.transform.position.y + 1;
             int minZPos = position.z + (int)startBuilding.MinPoint.transform.position.z;
+
+            int maxXPos = position.x + (int)startBuilding.MaxPoint.transform.position.x + 1;
+            int maxYPos = position.y + (int)startBuilding.MaxPoint.transform.position.y + 1;
             int maxZPos = position.z + (int)startBuilding.MaxPoint.transform.position.z + 1;
             
             for (int x = minXPos; x < maxXPos; x++)
@@ -94,6 +99,9 @@ namespace Rodlix
                     }
                 }
             }
+
+            Vector3 instPosition = new Vector3(position.x * scale, position.y * scale, position.z * scale);
+            Construction building = Instantiate(startBuilding, instPosition, Quaternion.identity);
 
             return building;
         }

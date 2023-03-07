@@ -9,11 +9,9 @@ namespace Rodlix
         [SerializeField] private vThirdPersonCamera observer = null;
         [SerializeField] private WorldGenerator generator = null;
         [SerializeField] private Base baseBlocks = null;
+        [SerializeField] private float blockScale;
         [Space(10)]
         [SerializeField] private InfoOfBlockUI infoOFBlock;
-
-        //public Sprite crosshairImage;
-        //public Color crosshairColor = Color.white;
 
         private Vector3Int worldSize;
         private BlockRenderer blockRenderer = null;
@@ -21,14 +19,14 @@ namespace Rodlix
 
         private async void Start()
         {
-            blocks = generator.StartGeneration(baseBlocks, observer);
+            blocks = generator.StartGeneration(baseBlocks, observer, blockScale);
 
             CrossHair();
             //  renderer
             worldSize = generator.GetSize();
 
             blockRenderer = gameObject.AddComponent<BlockRenderer>();
-            blockRenderer.SetWorldSize(worldSize);
+            blockRenderer.SetWorldSize(worldSize, blockScale);
             await blockRenderer.Generate(blocks);
 
             //  player
@@ -52,8 +50,8 @@ namespace Rodlix
 
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    Vector3 blockCenter = hit.point - hit.normal * (0.5f); // * blockScale
-                    Vector3Int blockWorldPosition = Vector3Int.FloorToInt(blockCenter);// * blockScale
+                    Vector3 blockCenter = hit.point - hit.normal * (0.5f * blockScale);
+                    Vector3Int blockWorldPosition = Vector3Int.FloorToInt(blockCenter / blockScale);
                     
                     Block selectedBlock = blocks[blockWorldPosition.x, blockWorldPosition.y, blockWorldPosition.z];
                                         
@@ -70,8 +68,8 @@ namespace Rodlix
 
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    Vector3 blockCenter = hit.point - hit.normal * (0.5f); // * blockScale
-                    Vector3Int blockWorldPosition = Vector3Int.FloorToInt(blockCenter);// * blockScale
+                    Vector3 blockCenter = hit.point - hit.normal * (0.5f * blockScale);
+                    Vector3Int blockWorldPosition = Vector3Int.FloorToInt(blockCenter / blockScale);
 
                     Block selectedBlock = blocks[blockWorldPosition.x, blockWorldPosition.y, blockWorldPosition.z];
 
