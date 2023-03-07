@@ -15,5 +15,6 @@ MonoBehaviour:
   nameBlock: Clay
   material: {fileID: 2100000, guid: 3b985d2a9fba2974aa75927489e32b50, type: 2}
   elementType: 10
-  temperature: 25
-  weight: 3
+  temperature: 22
+  weight: 8
+  description: 'Clay is a type of fine-grained natural soil material containing '

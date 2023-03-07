@@ -15,5 +15,8 @@ MonoBehaviour:
   nameBlock: Oxygen
   material: {fileID: 2100000, guid: a46626703f1a6d240b14184fa9c67328, type: 2}
   elementType: 7
-  temperature: 15
-  weight: 1
+  temperature: 20
+  weight: 0.25
+  description: 'Gas
+
+    Suitable for breathing'

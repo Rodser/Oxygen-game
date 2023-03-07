@@ -16,4 +16,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 8e5e517390a47584b8105592e411aa85, type: 2}
   elementType: 11
   temperature: 25
-  weight: 3
+  weight: 4
+  description: ' Carbonate sedimentary rock which is the main source of the material
+    lime.'
