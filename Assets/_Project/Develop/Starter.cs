@@ -55,7 +55,7 @@ namespace Rodlix
                     
                     Block selectedBlock = blocks[blockWorldPosition.x, blockWorldPosition.y, blockWorldPosition.z];
                                         
-                    if (selectedBlock != null)
+                    if (selectedBlock != null || selectedBlock.ElementType != ElementType.Indestructible)
                     {
                         await blockRenderer.DestroyBlock(selectedBlock);
                     }                 
@@ -73,7 +73,7 @@ namespace Rodlix
 
                     Block selectedBlock = blocks[blockWorldPosition.x, blockWorldPosition.y, blockWorldPosition.z];
 
-                    if (selectedBlock != null)
+                    if (selectedBlock != null || selectedBlock.ElementType != ElementType.Indestructible)
                     {
                         infoOFBlock.InfoPanel.gameObject.SetActive(true);
                         infoOFBlock.Name.text = selectedBlock.NameBlock;

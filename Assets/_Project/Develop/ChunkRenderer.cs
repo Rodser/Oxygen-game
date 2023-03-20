@@ -60,7 +60,7 @@ namespace Rodlix
 
         private async Task RegenerateMesh()
         {
-            await Task.Delay(50);
+            await Task.Yield();
 
             vertices.Clear();
             uvs.Clear();
@@ -93,6 +93,19 @@ namespace Rodlix
             GetComponent<MeshFilter>().sharedMesh = chunkMesh;
             GetComponent<MeshCollider>().sharedMesh = chunkMesh;
             GetComponent<MeshRenderer>().material = material;
+            gameObject.layer = GetLayer();
+        }
+
+        private int GetLayer()
+        {
+            return currentType switch
+            {
+                ElementType.Hydrogen => 3,
+                ElementType.Oxygen => 3,
+                ElementType.Water => 4,
+                ElementType.DirtyWater => 4,
+                _ => 0,
+            };
         }
 
         private void GenerateBlock(int x, int y, int z)
